@@ -17,7 +17,7 @@
   $code=$_SESSION['product']['code'];
 
   //選択された古本を取り出す
-  $stmt=$db->prepare('SELECT mp.name,mp.price,mp.image FROM book.mst_product mp WHERE code=?');
+  $stmt=$db->prepare('SELECT mp.name,mp.price,mp.image FROM mst_product mp WHERE code=?');
   $stmt->execute(array($code));
   $rec=$stmt->fetch();
 

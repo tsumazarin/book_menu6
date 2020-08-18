@@ -42,7 +42,7 @@
   }
 
   //スタッフ全員を取り出す
-  $stmt=$db->prepare('SELECT ms.code,ms.name FROM book.mst_staff ms WHERE 1');
+  $stmt=$db->prepare('SELECT ms.code,ms.name FROM mst_staff ms WHERE 1');
   $stmt->execute();
 
 

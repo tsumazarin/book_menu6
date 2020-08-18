@@ -23,7 +23,7 @@
     $pass=$_SESSION['staff']['pass'];
 
     //修正
-    $stmt=$db->prepare('UPDATE book.mst_staff SET name=?,password=? WHERE code=?');
+    $stmt=$db->prepare('UPDATE mst_staff SET name=?,password=? WHERE code=?');
     $stmt->execute(array($name,$pass,$code));
 
     $db=null;

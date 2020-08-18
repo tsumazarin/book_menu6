@@ -11,7 +11,7 @@
   }
 
   //選択された古本を取り出す
-  $stmt=$db->prepare('SELECT * FROM book.mst_product WHERE code=?');
+  $stmt=$db->prepare('SELECT * FROM mst_product WHERE code=?');
   $stmt->execute(array($_REQUEST['procode']));
   $rec=$stmt->fetch();
 

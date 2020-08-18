@@ -11,7 +11,7 @@
       $pass=md5($pass);
 
       //ログイン処理
-      $stmt=$db->prepare('SELECT ms.code,ms.name FROM book.mst_staff ms WHERE code=? AND password=?');
+      $stmt=$db->prepare('SELECT ms.code,ms.name FROM mst_staff ms WHERE code=? AND password=?');
       $stmt->execute(array($code,$pass));
       $rec=$stmt->fetch();
 

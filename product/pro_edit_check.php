@@ -27,7 +27,7 @@
     $old_image=$_SESSION['product']['old_image'];
 
     //修正
-    $stmt=$db->prepare('UPDATE book.mst_product SET name=?,price=?,image=? WHERE code=?');
+    $stmt=$db->prepare('UPDATE mst_product SET name=?,price=?,image=? WHERE code=?');
     $stmt->execute(array($name,$price,$image['name'],$code));
 
     if($image['name']!=$old_image){

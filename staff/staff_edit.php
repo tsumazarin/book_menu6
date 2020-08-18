@@ -17,7 +17,7 @@
   $staff_code=$_SESSION['staff']['code'];
 
   //選択されたスタッフを取り出す
-  $stmt=$db->prepare('SELECT ms.name FROM book.mst_staff ms WHERE code=?');
+  $stmt=$db->prepare('SELECT ms.name FROM mst_staff ms WHERE code=?');
   $stmt->execute(array($staff_code));
   $rec=$stmt->fetch();
 

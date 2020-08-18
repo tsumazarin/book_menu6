@@ -16,7 +16,7 @@
 
   $code=$_SESSION['staff']['code'];
 
-  $stmt=$db->prepare('SELECT * FROM book.mst_staff WHERE code=?');
+  $stmt=$db->prepare('SELECT * FROM mst_staff WHERE code=?');
   $stmt->execute(array($code));
   $rec=$stmt->fetch();
 ?>

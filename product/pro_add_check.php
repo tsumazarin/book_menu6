@@ -25,7 +25,7 @@
       $price=$_SESSION['product']['price'];
       $image=$_SESSION['product']['image'];
 
-      $stmt=$db->prepare('INSERT INTO book.mst_product(name,price,image) VALUES (?,?,?)');
+      $stmt=$db->prepare('INSERT INTO mst_product(name,price,image) VALUES (?,?,?)');
       $stmt->execute(array($name,$price,$image['name']));
 
       $db=null;

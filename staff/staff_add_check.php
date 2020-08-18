@@ -22,7 +22,7 @@
       $name=$_SESSION['staff']['name'];
       $pass=$_SESSION['staff']['pass'];
 
-      $stmt=$db->prepare('INSERT INTO book.mst_staff(name,password) VALUES (?,?)');
+      $stmt=$db->prepare('INSERT INTO mst_staff(name,password) VALUES (?,?)');
       $stmt->execute(array($name,$pass));
 
       $db=null;

@@ -17,7 +17,7 @@
   $code=$_SESSION['staff']['code'];
 
   //スタッフを削除
-  $stmt=$db->prepare('DELETE FROM book.mst_staff WHERE code=?');
+  $stmt=$db->prepare('DELETE FROM mst_staff WHERE code=?');
   $stmt->execute(array($code));
 ?>
 

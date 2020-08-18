@@ -21,14 +21,14 @@
 
   if(isset($_POST['done'])==true){
     //占有ロック
-    $stmt=$db->prepare('LOCK TABLES book.dat_sales WRITE, book.dat_sales_product WRITE, book.dat_member WRITE');
+    $stmt=$db->prepare('LOCK TABLES dat_sales WRITE, dat_sales_product WRITE, dat_member WRITE');
     $stmt->execute();
 
     $lastmembercode=0;
     //会員登録情報をdat_memberに入れる
     if($order=='order_register'){
       $stmt=$db->prepare('INSERT INTO
-        book.dat_member(password,name,email,postal,address,tel,gender,birth)
+        dat_member(password,name,email,postal,address,tel,gender,birth)
         VALUES(?,?,?,?,?,?,?,?)');
       $stmt->execute(array($pass,$name,$email,$postal,$address,$tel,$gender,$birth));
 
@@ -40,7 +40,7 @@
 
     //dat_salesにデータを入れる
     $stmt=$db->prepare('INSERT INTO
-      book.dat_sales(code_member,name,email,postal,address,tel)
+      dat_sales(code_member,name,email,postal,address,tel)
       VALUES(?,?,?,?,?,?)');
     $stmt->execute(array($lastmembercode,$name,$email,$postal,$address,$tel));
 
@@ -51,7 +51,7 @@
     $lastcode=$rec['LAST_INSERT_ID()'];
 
     for($i=0; $i<$max; $i++){
-      $stmt=$db->prepare('INSERT INTO book.dat_sales_product(code_sales,code_product,price,quantity) VALUES(?,?,?,?)');
+      $stmt=$db->prepare('INSERT INTO dat_sales_product(code_sales,code_product,price,quantity) VALUES(?,?,?,?)');
       $stmt->execute(array($lastcode,$carts[$i],$price[$i],$number[$i]));
     }
 
