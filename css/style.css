@@ -1,0 +1,210 @@
+@charset "utf-8";
+
+html{
+  font-size:62.5%;
+}
+
+body{
+  color:#333;
+  font-size:1.7rem;
+  font-family:"Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  width:100%;
+  background-color:#D0B0FF;
+}
+
+header{
+  background-color:#D0B0FF;
+  padding:50px 0;
+}
+
+footer{
+  width:100%;
+  height:100px;
+}
+
+h2 {
+  display:inline-block;
+  text-align:center;
+  padding:20px 30px;
+  border-radius:20px;
+  margin-right:58px;
+  font-size:3.5rem;
+  color:#fff;
+  background-color:#9933FF;
+}
+
+dl, form{
+  margin:0 auto;
+  text-align:center;
+}
+
+dt, p{
+  display:inline-block;
+  text-align:center;
+  padding:20px 30px;
+  border-radius:20px;
+  font-size:1.5rem;
+  color:#fff;
+  background-color:#9933FF;
+}
+
+a{
+  text-decoration:none;
+}
+
+a:hover{
+  opacity:0.85;
+}
+
+img{
+  width:200px;
+  height:250px;
+}
+
+table{
+  width:900px;
+  color:#fff;
+  background-color:#9933FF;
+  padding:50px 50px;
+  border-radius:20px;
+}
+
+.clear{
+  content:'';
+  clear:both;
+  display:block;
+  padding:10px 0;
+}
+
+.button{
+  color:#fff;
+  background-color:#9933FF;
+  padding:20px 30px;
+  border-radius:5px;
+}
+
+
+.welcome{
+  display:inline-block;
+  color:#DCDCDC;
+  background-color:#9933FF;
+  margin-left:30px;
+  padding:20px 30px;
+  border-radius:10px;
+}
+
+.midashi-wrapper{
+  margin:0 auto;
+  text-align:center;
+}
+
+.logout{
+  width:90px;
+  float:right;
+  margin-right:30px;
+}
+
+.login{
+  width:110px;
+  float:right;
+  margin-right:30px;
+}
+
+/* shop_list.php */
+.item{
+  width:28%;
+  float:left;
+  padding:60px 0;
+  text-align:center;
+  margin:20px 20px auto;
+  background-color:#9933FF;
+  border-radius:15px;
+}
+
+.item_title{
+  color:#fff;
+  margin:5px 5px;
+  padding:10px 5px 10px 0;
+
+
+}
+
+.cartlook{
+  text-align:center;
+  margin:40px 0 auto;
+}
+
+/* member_login.php */
+.input_title{
+  margin-right:60px;
+}
+
+.input_content{
+  display:inline-block;
+  width:300px;
+  margin-right:100px;
+  margin:30px 85px 20px 0;
+}
+
+.do_login{
+  margin:50px 50px 50px 0;
+}
+
+.list{
+  margin:10px 0;
+}
+
+.left{
+  width:400px;
+  float:left;
+  padding-left:200px;
+}
+
+.right{
+  width:200px;
+  float:left;
+}
+
+/* shop_cartin.php */
+.done{
+  text-align:center;
+  margin-right:50px;
+}
+
+/* shop_cartlook.php */
+.cart_form{
+  margin-left:150px;
+}
+
+.change{
+  display:block;
+  margin-right:150px;
+  margin-bottom:50px;
+}
+
+/* shop_form.php */
+.register{
+  padding:5px 10px;
+  margin-bottom:30px;
+}
+
+.check{
+  margin-right:100px;
+}
+
+.mail{
+  margin-right:60px;
+}
+
+
+/* staff_top.php */
+.menu{
+  margin-right:70px;
+}
+
+/* pro_list */
+.book_title{
+  font-weight:bold;
+}
+
+/* pro_add */
