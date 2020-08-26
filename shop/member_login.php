@@ -11,12 +11,20 @@
       $pass=md5($pass);
 
       //ログイン処理
-      $stmt=$db->prepare('SELECT dm.code,dm.name FROM dat_member dm WHERE email=? AND password=?');
+      $stmt=$db->prepare('SELECT dm.code,dm.name
+        FROM
+          dat_member dm
+        WHERE
+          email=?
+          AND
+          password=?
+      ');
       $stmt->execute(array($email,$pass));
       $rec=$stmt->fetch();
 
       $db=null;
 
+      #ログイン成功
       if($rec==true){
         $_SESSION['cus_login']['now']=1;
         $_SESSION['cus_login']['code']=$rec['code'];
@@ -27,6 +35,7 @@
       }else{
         $error['login']='wrong';
       }
+
     }else{
       $error['login']='blank';
     }

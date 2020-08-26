@@ -25,7 +25,12 @@
   $honbun.="ご注文商品\n";
   $honbun.="------------\n";
   for($i=0; $i<$max; $i++){
-    $stmt=$db->prepare('SELECT mp.name,mp.price FROM mst_product mp WHERE code=?');
+    $stmt=$db->prepare('SELECT mp.name,mp.price
+      FROM
+        mst_product mp
+      WHERE
+        code=?
+    ');
     $data[0]=$carts[$i];
     $stmt->execute($data);
     $rec=$stmt->fetch();

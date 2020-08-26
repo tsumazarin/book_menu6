@@ -38,7 +38,13 @@
   }
 
   //古本をすべて取り出す
-  $stmt=$db->prepare('SELECT mp.code,mp.name,mp.price,mp.image FROM mst_product mp WHERE 1');
+  $stmt=$db->prepare('SELECT
+      mp.code,mp.name,mp.price,mp.image
+    FROM
+      mst_product mp
+    WHERE
+      1
+  ');
   $stmt->execute();
 
 

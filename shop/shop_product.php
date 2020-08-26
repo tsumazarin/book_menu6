@@ -12,7 +12,12 @@
 
   $carts=$_SESSION['cart'];
 
-  $stmt=$db->prepare('SELECT * FROM mst_product WHERE code=?');
+  $stmt=$db->prepare('SELECT *
+    FROM
+      mst_product
+    WHERE
+      code=?
+  ');
   $stmt->execute(array($_REQUEST['procode']));
   $rec=$stmt->fetch();
 ?>

@@ -20,39 +20,94 @@
   $max=count($carts);
 
   if(isset($_POST['card'])==true || isset($_POST['done'])==true){
-    //占有ロック
-    $stmt=$db->prepare('LOCK TABLES dat_sales WRITE, dat_sales_product WRITE, dat_member WRITE');
+    //占有ロック開始
+    $stmt=$db->prepare('LOCK TABLES
+      dat_sales WRITE,
+      dat_sales_product WRITE,
+      dat_member WRITE
+    ');
     $stmt->execute();
 
-    $lastmembercode=0;
-    //会員登録情報をdat_memberに入れる
+    //会員登録情報をデータベス（dat_member）へ
     if($order=='order_register'){
       $stmt=$db->prepare('INSERT INTO
-        dat_member(password,name,email,postal,address,tel,gender,birth)
-        VALUES(?,?,?,?,?,?,?,?)');
-      $stmt->execute(array($pass,$name,$email,$postal,$address,$tel,$gender,$birth));
+        dat_member(
+          password,
+          name,
+          email,
+          postal,
+          address,
+          tel,
+          gender,
+          birth
+        )
+        VALUES
+          (?,?,?,?,?,?,?,?)
+      ');
+      $stmt->execute(array(
+        $pass,
+        $name,
+        $email,
+        $postal,
+        $address,
+        $tel,
+        $gender,
+        $birth
+      ));
 
+      //購入履歴IDの最後を取り出す
+      $last_member_code=0;
       $stmt=$db->prepare('SELECT LAST_INSERT_ID()');
       $stmt->execute();
       $rec=$stmt->fetch();
-      $lastmembercode=$rec['LAST_INSERT_ID()'];
+      $last_member_code=$rec['LAST_INSERT_ID()'];
     }
 
     //dat_salesにデータを入れる
     $stmt=$db->prepare('INSERT INTO
-      dat_sales(code_member,name,email,postal,address,tel)
-      VALUES(?,?,?,?,?,?)');
-    $stmt->execute(array($lastmembercode,$name,$email,$postal,$address,$tel));
+      dat_sales(
+        code_member,
+        name,
+        email,
+        postal,
+        address,
+        tel
+      )
+      VALUES
+        (?,?,?,?,?,?)
+    ');
+    $stmt->execute(array(
+      $last_member_code,
+      $name,
+      $email,
+      $postal,
+      $address,
+      $tel
+    ));
 
     //dat_sales_productにデータを入れる
     $stmt=$db->prepare('SELECT LAST_INSERT_ID()');
     $stmt->execute();
     $rec=$stmt->fetch();
-    $lastcode=$rec['LAST_INSERT_ID()'];
+    $last_code=$rec['LAST_INSERT_ID()'];
 
     for($i=0; $i<$max; $i++){
-      $stmt=$db->prepare('INSERT INTO dat_sales_product(code_sales,code_product,price,quantity) VALUES(?,?,?,?)');
-      $stmt->execute(array($lastcode,$carts[$i],$price[$i],$number[$i]));
+      $stmt=$db->prepare('INSERT INTO dat_sales_product(
+          code_sales,
+          code_product,
+          price,
+          quantity
+        )
+        VALUES
+          (?,?,?,?)
+      ');
+      
+      $stmt->execute(array(
+        $last_code,
+        $carts[$i],
+        $price[$i],
+        $number[$i]
+      ));
     }
 
     //ロック解除
@@ -123,7 +178,7 @@
       </dl>
       <div class="cartlook">
         <input class="button" type="button" onclick="history.back()" value="戻る"> |
-        <input class="button" type="submit" name="done" value="代引き"> | 
+        <input class="button" type="submit" name="done" value="代引き"> |
         <input class="button" type="submit" name="card" value="カード払い">
       </div>
     </form>

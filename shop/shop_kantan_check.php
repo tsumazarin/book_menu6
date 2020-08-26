@@ -12,7 +12,17 @@
 
   $login_name=$_SESSION['cus_login']['name'];
   $login_code=$_SESSION['cus_login']['code'];
-  $stmt=$db->prepare('SELECT dm.name,dm.email,dm.postal,dm.address,dm.tel FROM dat_member dm WHERE code=?');
+  $stmt=$db->prepare('SELECT
+      dm.name,
+      dm.email,
+      dm.postal,
+      dm.address,
+      dm.tel
+    FROM
+      dat_member dm
+    WHERE
+      code=?
+  ');
   $stmt->execute(array($login_code));
   $rec2=$stmt->fetch();
 
@@ -35,24 +45,57 @@
 
   if(isset($_POST['done'])==true || isset($_POST['card'])==true){
     //占有ロック
-    $stmt=$db->prepare('LOCK TABLES dat_sales WRITE, dat_sales_product WRITE');
+    $stmt=$db->prepare('LOCK TABLES
+      dat_sales WRITE,
+      dat_sales_product WRITE
+    ');
     $stmt->execute();
 
     //dat_salesにデータを入れる
     $stmt=$db->prepare('INSERT INTO
-        dat_sales(code_member,name,email,postal,address,tel)
-      VALUES(?,?,?,?,?,?)');
-    $stmt->execute(array($login_code,$name,$email,$postal,$address,$tel));
+        dat_sales(
+          code_member,
+          name,
+          email,
+          postal,
+          address,
+          tel
+        )
+      VALUES
+        (?,?,?,?,?,?)
+    ');
+    $stmt->execute(array(
+      $login_code,
+      $name,
+      $email,
+      $postal,
+      $address,
+      $tel
+    ));
 
-    //dat_sales_productにデータを入れる
+    //購入履歴IDの最後を取得
     $stmt=$db->prepare('SELECT LAST_INSERT_ID()');
     $stmt->execute();
     $rec=$stmt->fetch();
     $lastcode=$rec['LAST_INSERT_ID()'];
 
+    //dat_sales_productにデータを入れる
     for($i=0; $i<$max; $i++){
-      $stmt=$db->prepare('INSERT INTO dat_sales_product(code_sales,code_product,price,quantity) VALUES(?,?,?,?)');
-      $stmt->execute(array($lastcode,$carts[$i],$price[$i],$number[$i]));
+      $stmt=$db->prepare('INSERT INTO
+          dat_sales_product(
+            code_sales,
+            code_product,
+            price,quantity
+          )
+        VALUES
+          (?,?,?,?)
+      ');
+      $stmt->execute(array(
+        $lastcode,
+        $carts[$i],
+        $price[$i],
+        $number[$i]
+      ));
     }
 
     //ロック解除

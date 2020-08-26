@@ -21,7 +21,12 @@
 
   //カートに入れた古本を取り出す
   foreach($carts as $cart){
-    $stmt=$db->prepare('SELECT mp.code,mp.name,mp.price,mp.image FROM mst_product mp WHERE code=?');
+    $stmt=$db->prepare('SELECT mp.code,mp.name,mp.price,mp.image
+      FROM
+        mst_product mp
+      WHERE
+        code=?
+    ');
     $data[0]=$cart;
     $stmt->execute($data);
     $rec=$stmt->fetch();
