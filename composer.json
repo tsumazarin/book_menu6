@@ -1,6 +1,7 @@
 {
     "require": {
       "php": "*",
-      "ext-mbstring": "*"
+      "ext-mbstring": "*",
+        "stripe/stripe-php": "^7.49"
     }
  }

@@ -19,7 +19,7 @@
   $price=$_SESSION['cart_price'];
   $max=count($carts);
 
-  if(isset($_POST['done'])==true){
+  if(isset($_POST['card'])==true || isset($_POST['done'])==true){
     //占有ロック
     $stmt=$db->prepare('LOCK TABLES dat_sales WRITE, dat_sales_product WRITE, dat_member WRITE');
     $stmt->execute();
@@ -61,8 +61,19 @@
 
     $db=null;
 
-    header('Location: shop_form_done.php');
-    exit();
+    //代引きの場合
+    if(isset($_POST['done'])==true){
+      $_SESSION['pay']='cash';
+      header('Location: shop_form_done.php');
+      exit();
+    }
+
+    //カード払いの場合
+    if(isset($_POST['card'])==true){
+      $_SESSION['pay']='card';
+      header('Location: shop_card.php');
+      exit();
+    }
   }
 ?>
 
@@ -112,7 +123,8 @@
       </dl>
       <div class="cartlook">
         <input class="button" type="button" onclick="history.back()" value="戻る"> |
-        <input class="button" type="submit" name="done" value="登録">
+        <input class="button" type="submit" name="done" value="代引き"> | 
+        <input class="button" type="submit" name="card" value="カード払い">
       </div>
     </form>
     <footer></footer>

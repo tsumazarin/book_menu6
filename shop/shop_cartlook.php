@@ -32,6 +32,13 @@
 
   }
 
+  //総額を出す
+  $total=0;
+  for($i=0; $i<$max; $i++){
+    $total+=$price[$i]*$number[$i];
+  }
+  $_SESSION['total']=$total;
+
 
   $db=null;
 
@@ -83,6 +90,7 @@
           </table>
           <br><br>
           <div class="change">
+            <p>合計：<?php echo h($total); ?>円</p>
             <p>※　個数は10コ以内でお願いします</p><br>
             <input class="button" type="button" onclick="history.back()" value="戻る"> |
             <input class="button" type="submit" value="個数変更">

@@ -16,6 +16,8 @@
   $number=$_SESSION['number'];
   $max=count($carts);
 
+  $pay=$_SESSION['pay'];
+
   //メールの本文
   $honbun='';
   $honbun.="{$name}様\n\nこのたびはご注文ありがとうございました。\n";
@@ -37,13 +39,19 @@
   }
   $db=null;
 
-  $honbun.="送料は無料です。\n";
-  $honbun.="------------\n";
-  $honbun.="\n";
-  $honbun.="代金は以下の口座にお振込ください。\n";
-  $honbun.="つま銀行 ざりん支店 普通口座 1234567\n";
-  $honbun.="入金確認が取れ次第、発送させていただきます。\n";
-  $honbun.="\n";
+  if($pay=='cash'){
+    $honbun.="送料は無料です。\n";
+    $honbun.="------------\n";
+    $honbun.="\n";
+    $honbun.="代金は以下の口座にお振込ください。\n";
+    $honbun.="つま銀行 ざりん支店 普通口座 1234567\n";
+    $honbun.="入金確認が取れ次第、発送させていただきます。\n";
+    $honbun.="\n";
+  }
+
+  if($pay=='card'){
+    $honbun.="カード支払いが完了しました。\n";
+  }
 
   if($order=='order_register'){
     $honbun.="会員登録が完了いたしました。\n";
