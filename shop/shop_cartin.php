@@ -40,7 +40,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style.css?v=2">
-    <title>古本の主人</title>
+    <title>古本のアルジ</title>
   </head>
   <body>
     <?php if($_SESSION['cus_login']['now']): ?>
