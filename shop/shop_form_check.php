@@ -101,7 +101,7 @@
         VALUES
           (?,?,?,?)
       ');
-      
+
       $stmt->execute(array(
         $last_code,
         $carts[$i],
@@ -137,7 +137,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style.css?v=2">
-    <title>古本市場</title>
+    <title>古本の主人</title>
   </head>
   <body>
     <h2>お客様情報</h2>

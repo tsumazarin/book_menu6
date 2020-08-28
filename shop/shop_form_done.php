@@ -66,7 +66,7 @@
   }
 
   $honbun.="□□□□□□□□□□□□□□□□\n";
-  $honbun.="〜品質そこそこ古本市場〜\n";
+  $honbun.="〜品質そこそこ古本の主人〜\n";
   $honbun.="\n";
   $honbun.="沖縄県那覇市恩納村123-4\n";
   $honbun.="電話 090-6060-7843\n";
@@ -102,7 +102,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style.css?v=2">
-    <title>古本市場</title>
+    <title>古本の主人</title>
   </head>
   <body>
     <div class="midashi-wrapper">

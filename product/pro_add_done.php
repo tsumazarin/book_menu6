@@ -23,7 +23,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style.css?v=2">
-    <title>古本市場</title>
+    <title>古本の主人</title>
   </head>
   <body>
     <p><?php echo h($login_name); ?>さん、ログイン中</p>
