@@ -4,11 +4,11 @@
   require('../htmlspecialchars.php');
   require('../dbconnect.php');
 
-  $name = $_SESSION['customer']['name'];
-  $email = $_SESSION['customer']['email'];
-  $postal = $_SESSION['customer']['postal'];
-  $address = $_SESSION['customer']['address'];
-  $tel = $_SESSION['customer']['tel'];
+  $customer_name = $_SESSION['customer']['name'];
+  $customer_email = $_SESSION['customer']['email'];
+  $customer_postal = $_SESSION['customer']['postal'];
+  $customer_address = $_SESSION['customer']['address'];
+  $customer_tel = $_SESSION['customer']['tel'];
 
   $order = $_SESSION['customer']['order'];
 
@@ -20,7 +20,7 @@
 
   //メールの本文
   $honbun = '';
-  $honbun .= "{$name}様\n\nこのたびはご注文ありがとうございました。\n";
+  $honbun .= "{$customer_name}様\n\nこのたびはご注文ありがとうございました。\n";
   $honbun .= "\n";
   $honbun .= "ご注文商品\n";
   $honbun .= "------------\n";
@@ -80,11 +80,11 @@
   $honbun = html_entity_decode($honbun, ENT_QUOTES, 'utf-8');
   mb_language('Japanese');
   mb_internal_encoding('utf-8');
-  mb_send_mail($email, $title, $honbun, $header);
+  mb_send_mail($customer_email, $title, $honbun, $header);
 
   //お店にメール送信
   $title = "ご注文ありがとうございます。";
-  $header = "From: {$email}";
+  $header = "From: {$customer_email}";
   $honbun = html_entity_decode($honbun, ENT_QUOTES, 'utf-8');
   mb_language('Japanese');
   mb_internal_encoding('utf-8');
@@ -110,12 +110,12 @@
     </div>
     <div class="midashi-wrapper mail">
       <p>
-        <?php echo h($name); ?>様、ご注文ありがとうございました。<br>
-        <?php echo h($email); ?>にメールを送りましたのでご確認ください。<br>
+        <?php echo h($customer_name); ?>様、ご注文ありがとうございました。<br>
+        <?php echo h($customer_email); ?>にメールを送りましたのでご確認ください。<br>
         商品は以下の住所に発送させていただきます。<br>
-        〒　<?php echo h($postal); ?><br>
-        住所：<?php echo h($address); ?><br>
-        電話番号：<?php echo h($tel); ?><br>
+        〒　<?php echo h($customer_postal); ?><br>
+        住所：<?php echo h($customer_address); ?><br>
+        電話番号：<?php echo h($customer_tel); ?><br>
         <?php if ($order == 'order_register') : ?>
           会員登録が完了いたしました。<br>
           次回からはメールアドレスとパスワードでログインしてください。<br>

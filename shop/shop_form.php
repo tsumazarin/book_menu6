@@ -6,7 +6,7 @@
   require('../dbconnect.php');
 
   if (isset($_POST['register']) == true) {
-    $order['register'] = 'no';
+    $order['register'] = 'on';
   }
 
   if (isset($_POST['check']) == true) {
@@ -132,7 +132,7 @@
         <input class="radio" type="radio" name="order" value="order_once">今回だけの注文<br>
         <input class="radio" type="radio" name="order" value="order_register"checked>会員登録して注文
         <input class="button register" type="submit" name="register" value="会員登録する"><br>
-        <?php if ($order['register'] == 'no') : ?>
+        <?php if ($order['register'] == 'on') : ?>
           <br>
           <p class="register">※　会員登録する方は以下の項目も入力してください</p><br>
           <dt class="input_title">パスワードを設定してください</dt>
