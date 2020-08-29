@@ -4,17 +4,17 @@
   require('../htmlspecialchars.php');
   require('../dbconnect.php');
 
-  $name = $_SESSION['cus']['name'];
-  $email = $_SESSION['cus']['email'];
-  $postal = $_SESSION['cus']['postal'];
-  $address = $_SESSION['cus']['address'];
-  $tel = $_SESSION['cus']['tel'];
-  $order = $_SESSION['cus']['order'];
-  $pass = $_SESSION['cus']['pass'];
-  $gender = $_SESSION['cus']['gender'];
-  $birth = $_SESSION['cus']['birth'];
+  $name = $_SESSION['customer']['name'];
+  $email = $_SESSION['customer']['email'];
+  $postal = $_SESSION['customer']['postal'];
+  $address = $_SESSION['customer']['address'];
+  $tel = $_SESSION['customer']['tel'];
+  $order = $_SESSION['customer']['order'];
+  $pass = $_SESSION['customer']['pass'];
+  $gender = $_SESSION['customer']['gender'];
+  $birth = $_SESSION['customer']['birth'];
 
-  $carts = $_SESSION['cart'];
+  $carts = $_SESSION['carts'];
   $number = $_SESSION['number'];
   $price = $_SESSION['cart_price'];
   $max = count($carts);
@@ -157,7 +157,7 @@
         <br>
         <dt>電話番号：<?php echo h($tel); ?></dt>
         <dd></dd>
-        <?php if (isset($_SESSION['cus']['pass']) == true) : ?>
+        <?php if (isset($_SESSION['customer']['pass']) == true) : ?>
           <br>
           <dt>パスワード：【表示されません】</dt>
           <dd></dd>

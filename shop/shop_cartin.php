@@ -21,8 +21,8 @@
   $rec = $stmt->fetch();
 
   //カートを上書き
-  if (isset($_SESSION['cart']) == true) {
-    $carts = $_SESSION['cart'];
+  if (isset($_SESSION['carts']) == true) {
+    $carts = $_SESSION['carts'];
     $number = $_SESSION['number'];
     $price = $_SESSION['cart_price'];
   }
@@ -30,7 +30,7 @@
   $carts[] = $rec['code'];
   $number[] = 1;
   $price[] = $rec['price'];
-  $_SESSION['cart'] = $carts;
+  $_SESSION['carts'] = $carts;
   $_SESSION['number'] = $number;
   $_SESSION['cart_price'] = $price;
 ?>

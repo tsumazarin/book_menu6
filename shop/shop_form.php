@@ -48,17 +48,17 @@
 
     //エラーなし
     if (empty($error)) {
-      $_SESSION['cus']['name'] = $_POST['name'];
-      $_SESSION['cus']['email'] = $email;
-      $_SESSION['cus']['postal'] = $postal;
-      $_SESSION['cus']['address'] = $_POST['address'];
-      $_SESSION['cus']['tel'] = $tel;
-      $_SESSION['cus']['order'] = $_POST['order'];
+      $_SESSION['customer']['name'] = $_POST['name'];
+      $_SESSION['customer']['email'] = $email;
+      $_SESSION['customer']['postal'] = $postal;
+      $_SESSION['customer']['address'] = $_POST['address'];
+      $_SESSION['customer']['tel'] = $tel;
+      $_SESSION['customer']['order'] = $_POST['order'];
       if ($_POST['order'] == 'order_register') {
         //会員登録に関する
-        $_SESSION['cus']['pass'] = md5($pass);
-        $_SESSION['cus']['gender'] = $_POST['gender'];
-        $_SESSION['cus']['birth'] = $_POST['birth'];
+        $_SESSION['customer']['pass'] = md5($pass);
+        $_SESSION['customer']['gender'] = $_POST['gender'];
+        $_SESSION['customer']['birth'] = $_POST['birth'];
       }
 
       header('Location: shop_form_check.php');

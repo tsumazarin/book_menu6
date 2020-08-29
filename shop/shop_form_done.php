@@ -4,15 +4,15 @@
   require('../htmlspecialchars.php');
   require('../dbconnect.php');
 
-  $name = $_SESSION['cus']['name'];
-  $email = $_SESSION['cus']['email'];
-  $postal = $_SESSION['cus']['postal'];
-  $address = $_SESSION['cus']['address'];
-  $tel = $_SESSION['cus']['tel'];
+  $name = $_SESSION['customer']['name'];
+  $email = $_SESSION['customer']['email'];
+  $postal = $_SESSION['customer']['postal'];
+  $address = $_SESSION['customer']['address'];
+  $tel = $_SESSION['customer']['tel'];
 
-  $order = $_SESSION['cus']['order'];
+  $order = $_SESSION['customer']['order'];
 
-  $carts = $_SESSION['cart'];
+  $carts = $_SESSION['carts'];
   $number = $_SESSION['number'];
   $max = count($carts);
 
@@ -90,8 +90,8 @@
   mb_internal_encoding('utf-8');
   mb_send_mail('info@huruhonichiba.co.jp', $title, $honbun, $header);
 
-  unset($_SESSION['cus']);
-  unset($_SESSION['cart']);
+  unset($_SESSION['customer']);
+  unset($_SESSION['carts']);
   unset($_SESSION['number']);
   unset($_SESSION['price']);
 

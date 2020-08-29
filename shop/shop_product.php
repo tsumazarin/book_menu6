@@ -7,19 +7,19 @@
   //ログイン確認
   session_regenerate_id(true);
   if (isset($_SESSION['cus_login']['now']) == true) {
-    $login_name=$_SESSION['cus_login']['name'];
+    $login_name = $_SESSION['cus_login']['name'];
   }
 
-  $carts=$_SESSION['cart'];
+  $carts = $_SESSION['carts'];
 
-  $stmt=$db->prepare('SELECT *
+  $stmt = $db->prepare('SELECT *
     FROM
       mst_product
     WHERE
       code=?
   ');
   $stmt->execute(array($_REQUEST['procode']));
-  $rec=$stmt->fetch();
+  $rec = $stmt->fetch();
 ?>
 
 <!DOCTYPE html>

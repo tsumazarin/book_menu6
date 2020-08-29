@@ -6,7 +6,7 @@
   require('../dbconnect.php');
 
   $max = $_SESSION['max'];
-  $carts = $_SESSION['cart'];
+  $carts = $_SESSION['carts'];
 
   for ($i = 0; $i < $max; $i++) {
     $number[] = mb_convert_kana($_POST["number{$i}"], 'n', 'utf8');
@@ -31,7 +31,7 @@
     }
   }
 
-  $_SESSION['cart'] = $carts;
+  $_SESSION['carts'] = $carts;
   $_SESSION['number'] = $number;
 
   header('Location: shop_cartlook.php');

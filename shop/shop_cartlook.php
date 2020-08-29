@@ -10,8 +10,8 @@
     $login_name = $_SESSION['cus_login']['name'];
   }
 
-  if (isset($_SESSION['cart']) == true) {
-    $carts = $_SESSION['cart'];
+  if (isset($_SESSION['carts']) == true) {
+    $carts = $_SESSION['carts'];
     $number = $_SESSION['number'];
     $max = count($carts);
     $_SESSION['max'] = $max;
