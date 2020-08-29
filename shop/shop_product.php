@@ -6,7 +6,7 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['cus_login']['now'])==true){
+  if (isset($_SESSION['cus_login']['now'])==true) {
     $login_name=$_SESSION['cus_login']['name'];
   }
 

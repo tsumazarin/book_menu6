@@ -5,37 +5,11 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['cus_login']['now'])==true){
+  if (isset($_SESSION['cus_login']['now'])==true) {
     $login_name=$_SESSION['cus_login']['name'];
   }
 
-  //スタッフ追加
-  if(isset($_POST['add'])==true){
-    header('Location: pro_add.php');
-    exit();
-  }
-
-  if(!empty($_POST['pro_code'])){
-    $_SESSION['product']['code']=$_POST['pro_code'];
-
-    //スタッフ参照
-    if(isset($_POST['display'])==true){
-      header('Location: pro_display.php');
-      exit();
-    }
-
-    //スタッフ修正
-    if(isset($_POST['edit'])==true){
-      header('Location: pro_edit.php');
-      exit();
-    }
-
-    //スタッフ削除
-    if(isset($_POST['delete'])==true){
-      header('Location: pro_delete.php');
-      exit();
-    }
-  }
+  
 
   //古本をすべて取り出す
   $stmt=$db->prepare('SELECT
