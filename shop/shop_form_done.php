@@ -4,91 +4,91 @@
   require('../htmlspecialchars.php');
   require('../dbconnect.php');
 
-  $name=$_SESSION['cus']['name'];
-  $email=$_SESSION['cus']['email'];
-  $postal=$_SESSION['cus']['postal'];
-  $address=$_SESSION['cus']['address'];
-  $tel=$_SESSION['cus']['tel'];
+  $name = $_SESSION['cus']['name'];
+  $email = $_SESSION['cus']['email'];
+  $postal = $_SESSION['cus']['postal'];
+  $address = $_SESSION['cus']['address'];
+  $tel = $_SESSION['cus']['tel'];
 
-  $order=$_SESSION['cus']['order'];
+  $order = $_SESSION['cus']['order'];
 
-  $carts=$_SESSION['cart'];
-  $number=$_SESSION['number'];
-  $max=count($carts);
+  $carts = $_SESSION['cart'];
+  $number = $_SESSION['number'];
+  $max = count($carts);
 
-  $pay=$_SESSION['pay'];
+  $pay = $_SESSION['pay'];
 
   //メールの本文
-  $honbun='';
-  $honbun.="{$name}様\n\nこのたびはご注文ありがとうございました。\n";
-  $honbun.="\n";
-  $honbun.="ご注文商品\n";
-  $honbun.="------------\n";
-  for($i=0; $i<$max; $i++){
-    $stmt=$db->prepare('SELECT mp.name,mp.price
+  $honbun = '';
+  $honbun .= "{$name}様\n\nこのたびはご注文ありがとうございました。\n";
+  $honbun .= "\n";
+  $honbun .= "ご注文商品\n";
+  $honbun .= "------------\n";
+  for ($i = 0; $i < $max; $i++) {
+    $stmt = $db->prepare('SELECT mp.name,mp.price
       FROM
         mst_product mp
       WHERE
         code=?
     ');
-    $data[0]=$carts[$i];
+    $data[0] = $carts[$i];
     $stmt->execute($data);
-    $rec=$stmt->fetch();
+    $rec = $stmt->fetch();
 
-    $total=$rec['price']*$number[$i];
+    $total = $rec['price']*$number[$i];
 
-    $honbun.="『{$rec['name']}』";
-    $honbun.="{$rec['price']}円×";
-    $honbun.="{$number[$i]}コ＝";
-    $honbun.="{$total}円\n";
+    $honbun .= "『{$rec['name']}』";
+    $honbun .= "{$rec['price']}円×";
+    $honbun .= "{$number[$i]}コ＝";
+    $honbun .= "{$total}円\n";
   }
-  $db=null;
+  $db = null;
 
-  if($pay=='cash'){
-    $honbun.="送料は無料です。\n";
-    $honbun.="------------\n";
-    $honbun.="\n";
-    $honbun.="代金は以下の口座にお振込ください。\n";
-    $honbun.="つま銀行 ざりん支店 普通口座 1234567\n";
-    $honbun.="入金確認が取れ次第、発送させていただきます。\n";
-    $honbun.="\n";
-  }
-
-  if($pay=='card'){
-    $honbun.="カード支払いが完了しました。\n";
+  if ($pay == 'cash') {
+    $honbun .= "送料は無料です。\n";
+    $honbun .= "------------\n";
+    $honbun .= "\n";
+    $honbun .= "代金は以下の口座にお振込ください。\n";
+    $honbun .= "つま銀行 ざりん支店 普通口座 1234567\n";
+    $honbun .= "入金確認が取れ次第、発送させていただきます。\n";
+    $honbun .= "\n";
   }
 
-  if($order=='order_register'){
-    $honbun.="会員登録が完了いたしました。\n";
-    $honbun.="次回からはメールアドレスとパスワードでログインしてください。\n";
-    $honbun.="ご注文が簡単にできるようになります。\n";
-    $honbun.="\n";
+  if ($pay == 'card') {
+    $honbun .= "カード支払いが完了しました。\n";
   }
 
-  $honbun.="□□□□□□□□□□□□□□□□\n";
-  $honbun.="〜品質そこそこ古本のアルジ〜\n";
-  $honbun.="\n";
-  $honbun.="沖縄県那覇市恩納村123-4\n";
-  $honbun.="電話 090-6060-7843\n";
-  $honbun.="メール：info@huruhonichiba.co.jp\n";
-  $honbun.="□□□□□□□□□□□□□□□□\n";
+  if ($order == 'order_register') {
+    $honbun .= "会員登録が完了いたしました。\n";
+    $honbun .= "次回からはメールアドレスとパスワードでログインしてください。\n";
+    $honbun .= "ご注文が簡単にできるようになります。\n";
+    $honbun .= "\n";
+  }
+
+  $honbun .= "□□□□□□□□□□□□□□□□\n";
+  $honbun .= "〜品質そこそこ古本のアルジ〜\n";
+  $honbun .= "\n";
+  $honbun .= "沖縄県那覇市恩納村123-4\n";
+  $honbun .= "電話 090-6060-7843\n";
+  $honbun .= "メール：info@huruhonichiba.co.jp\n";
+  $honbun .= "□□□□□□□□□□□□□□□□\n";
   //メール終了
 
   //お客様にメール送信
-  $title="ご注文ありがとうございます。";
-  $header='From: info@huruhonichiba.co.jp';
-  $honbun=html_entity_decode($honbun, ENT_QUOTES, 'utf-8');
+  $title = "ご注文ありがとうございます。";
+  $header = 'From: info@huruhonichiba.co.jp';
+  $honbun = html_entity_decode($honbun, ENT_QUOTES, 'utf-8');
   mb_language('Japanese');
   mb_internal_encoding('utf-8');
-  mb_send_mail($email,$title,$honbun,$header);
+  mb_send_mail($email, $title, $honbun, $header);
 
   //お店にメール送信
-  $title="ご注文ありがとうございます。";
-  $header="From: {$email}";
-  $honbun=html_entity_decode($honbun, ENT_QUOTES, 'utf-8');
+  $title = "ご注文ありがとうございます。";
+  $header = "From: {$email}";
+  $honbun = html_entity_decode($honbun, ENT_QUOTES, 'utf-8');
   mb_language('Japanese');
   mb_internal_encoding('utf-8');
-  mb_send_mail('info@huruhonichiba.co.jp',$title,$honbun,$header);
+  mb_send_mail('info@huruhonichiba.co.jp', $title, $honbun, $header);
 
   unset($_SESSION['cus']);
   unset($_SESSION['cart']);
@@ -116,7 +116,7 @@
         〒　<?php echo h($postal); ?><br>
         住所：<?php echo h($address); ?><br>
         電話番号：<?php echo h($tel); ?><br>
-        <?php if($order=='order_register'): ?>
+        <?php if ($order == 'order_register') : ?>
           会員登録が完了いたしました。<br>
           次回からはメールアドレスとパスワードでログインしてください。<br>
           ご注文が簡単にできるようになります。<br>

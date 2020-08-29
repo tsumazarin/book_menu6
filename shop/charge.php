@@ -7,13 +7,13 @@ require_once('../vendor/autoload.php');
 // APIのシークレットキー
 \Stripe\Stripe::setApiKey('sk_test_51HKKZoJPLEKFzxmlNjsgzQnUC60yd1eLBu2OmkmHT88q3xR3eiRjM0CVrHWAC5EGtHvqcvr0sJNVcXp7Zru5xMMG00k9QcfoKZ');
 
-$total=$_SESSION['total'];
+$total = $_SESSION['total'];
 
 $token = $_POST['stripeToken'];
 
 try {
 
-    if(!is_string($token)){
+    if (!is_string($token)) {
         throw new Exception('文字列以外のトークンが指定されました');
     }
 
@@ -27,7 +27,7 @@ try {
     header('Location: shop_form_done.php');
     exit();
 
-} catch(\Stripe\Error\Card $e) {
+} catch (\Stripe\Error\Card $e) {
     echo "ERORR:" . $e->getMessage();
     exit;
 }

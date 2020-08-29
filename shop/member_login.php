@@ -3,15 +3,15 @@
   require('../htmlspecialchars.php');
   require('../dbconnect.php');
 
-  if(isset($_POST['check'])==true){
+  if (isset($_POST['check']) == true) {
     //エラーの検査
-    if($_POST['email']!='' && $_POST['pass']!=''){
-      $email=mb_convert_kana($_POST['email'], 'a', 'utf8');
-      $pass=mb_convert_kana($_POST['pass'], 'n', 'utf8');
-      $pass=md5($pass);
+    if ($_POST['email'] != '' && $_POST['pass'] != '') {
+      $email = mb_convert_kana($_POST['email'], 'a', 'utf8');
+      $pass = mb_convert_kana($_POST['pass'], 'n', 'utf8');
+      $pass = md5($pass);
 
       //ログイン処理
-      $stmt=$db->prepare('SELECT dm.code,dm.name
+      $stmt = $db->prepare('SELECT dm.code,dm.name
         FROM
           dat_member dm
         WHERE
@@ -20,24 +20,24 @@
           password=?
       ');
       $stmt->execute(array($email,$pass));
-      $rec=$stmt->fetch();
+      $rec = $stmt->fetch();
 
-      $db=null;
+      $db = null;
 
       #ログイン成功
-      if($rec==true){
-        $_SESSION['cus_login']['now']=1;
-        $_SESSION['cus_login']['code']=$rec['code'];
-        $_SESSION['cus_login']['name']=$rec['name'];
+      if ($rec == true) {
+        $_SESSION['cus_login']['now'] = 1;
+        $_SESSION['cus_login']['code'] = $rec['code'];
+        $_SESSION['cus_login']['name'] = $rec['name'];
 
         header('Location: shop_list.php');
         exit();
       }else{
-        $error['login']='wrong';
+        $error['login'] = 'wrong';
       }
 
     }else{
-      $error['login']='blank';
+      $error['login'] = 'blank';
     }
   }
 ?>
@@ -58,11 +58,11 @@
         <dt class="input_title">メールアドレス</dt>
         <dd>
           <input class="input_content" type="text" name="email" value="<?php echo h($_POST['email']); ?>">
-          <?php if($error['login']=='blank'): ?>
+          <?php if ($error['login'] == 'blank') : ?>
             <br>
             <p>※　メールアドレスとパスワード両方ご記入ください</p>
           <?php endif; ?>
-          <?php if($error['login']=='wrong'): ?>
+          <?php if ($error['login'] == 'wrong') : ?>
             <p>※　メールアドレスもしくはパスワードが間違っています</p>
           <?php endif; ?>
         </dd>

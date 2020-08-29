@@ -1,6 +1,6 @@
 <?php
   //データベース接続
-    try{
+    try {
       $dbi = parse_url($_SERVER['CLEARDB_DATABASE_URL']);
   $dbi['dbname'] = ltrim($dbi['path'], '/');
   $dsn = "mysql:host={$dbi['host']};dbname={$dbi['dbname']};charset=utf8";
@@ -12,7 +12,7 @@
     PDO::MYSQL_ATTR_USE_BUFFERED_QUERY =>true,
   );
   $db = new PDO($dsn,$user,$password,$options);
-    }catch(PDOException $e){
+    }catch (PDOException $e) {
       echo "DB接続エラー：{$e->getMessage()}";
     }
 ?>

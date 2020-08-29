@@ -5,14 +5,14 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if (isset($_SESSION['cus_login']['now'])==true) {
-    $login_name=$_SESSION['cus_login']['name'];
+  if (isset($_SESSION['cus_login']['now']) == true) {
+    $login_name = $_SESSION['cus_login']['name'];
   }
 
-  
+
 
   //古本をすべて取り出す
-  $stmt=$db->prepare('SELECT
+  $stmt = $db->prepare('SELECT
       mp.code,mp.name,mp.price,mp.image
     FROM
       mst_product mp
@@ -22,7 +22,7 @@
   $stmt->execute();
 
 
-  $db=null;
+  $db = null;
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +34,11 @@
   </head>
   <body>
     <header>
-      <?php if($_SESSION['cus_login']['now']): ?>
+      <?php if ($_SESSION['cus_login']['now']) : ?>
         <p class="welcome"><?php echo h($login_name); ?>さん、ようこそ</p><br>
         <a class="button logout" href="member_logout.php">ログアウト</a>
         <div class="clear"></div>
-      <?php else: ?>
+      <?php else : ?>
         <p class="welcome">ゲストさん、ようこそ</p><br>
         <a class="button login" href="member_login.php">会員ログイン</a>
         <div class="clear"></div>
@@ -47,9 +47,9 @@
     <div class="midashi-wrapper">
       <h2>古本一覧</h2>
     </div>
-    <?php while(true): ?>
-      <?php $rec=$stmt->fetch(); ?>
-      <?php if($rec==false){break;} ?>
+    <?php while(true) : ?>
+      <?php $rec = $stmt->fetch(); ?>
+      <?php if ($rec == false) {break;} ?>
       <div class="item">
         <a class="item_title" href="shop_product.php?procode=<?php echo h($rec['code']); ?>">
           <img class="item_image" src="../product/pro_picture/<?php echo h($rec['image']); ?>">

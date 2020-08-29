@@ -5,13 +5,13 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['cus_login']['now'])==false){
+  if (isset($_SESSION['cus_login']['now']) == false) {
     header('Location: shop_cartlook.php');
     exit();
   }
 
-  $login_name=$_SESSION['cus_login']['name'];
-  $login_code=$_SESSION['cus_login']['code'];
+  $login_name = $_SESSION['cus_login']['name'];
+  $login_code = $_SESSION['cus_login']['code'];
   $stmt=$db->prepare('SELECT
       dm.name,
       dm.email,
@@ -24,26 +24,26 @@
       code=?
   ');
   $stmt->execute(array($login_code));
-  $rec2=$stmt->fetch();
+  $rec2 = $stmt->fetch();
 
-  $name=$rec2['name'];
-  $email=$rec2['email'];
-  $postal=$rec2['postal'];
-  $address=$rec2['address'];
-  $tel=$rec2['tel'];
-  $_SESSION['cus']['name']=$rec2['name'];
-  $_SESSION['cus']['email']=$rec2['email'];
-  $_SESSION['cus']['postal']=$rec2['postal'];
-  $_SESSION['cus']['address']=$rec2['address'];
-  $_SESSION['cus']['tel']=$rec2['tel'];
+  $name = $rec2['name'];
+  $email = $rec2['email'];
+  $postal = $rec2['postal'];
+  $address = $rec2['address'];
+  $tel = $rec2['tel'];
+  $_SESSION['cus']['name'] = $rec2['name'];
+  $_SESSION['cus']['email'] = $rec2['email'];
+  $_SESSION['cus']['postal'] = $rec2['postal'];
+  $_SESSION['cus']['address'] = $rec2['address'];
+  $_SESSION['cus']['tel'] = $rec2['tel'];
 
 
-  $carts=$_SESSION['cart'];
-  $number=$_SESSION['number'];
-  $price=$_SESSION['cart_price'];
-  $max=count($carts);
+  $carts = $_SESSION['cart'];
+  $number = $_SESSION['number'];
+  $price = $_SESSION['cart_price'];
+  $max = count($carts);
 
-  if(isset($_POST['done'])==true || isset($_POST['card'])==true){
+  if (isset($_POST['done']) == true || isset($_POST['card']) == true) {
     //占有ロック
     $stmt=$db->prepare('LOCK TABLES
       dat_sales WRITE,
@@ -52,7 +52,7 @@
     $stmt->execute();
 
     //dat_salesにデータを入れる
-    $stmt=$db->prepare('INSERT INTO
+    $stmt = $db->prepare('INSERT INTO
         dat_sales(
           code_member,
           name,
@@ -74,14 +74,14 @@
     ));
 
     //購入履歴IDの最後を取得
-    $stmt=$db->prepare('SELECT LAST_INSERT_ID()');
+    $stmt = $db->prepare('SELECT LAST_INSERT_ID()');
     $stmt->execute();
-    $rec=$stmt->fetch();
-    $lastcode=$rec['LAST_INSERT_ID()'];
+    $rec = $stmt->fetch();
+    $lastcode = $rec['LAST_INSERT_ID()'];
 
     //dat_sales_productにデータを入れる
-    for($i=0; $i<$max; $i++){
-      $stmt=$db->prepare('INSERT INTO
+    for ($i = 0; $i < $max; $i++) {
+      $stmt = $db->prepare('INSERT INTO
           dat_sales_product(
             code_sales,
             code_product,
@@ -99,21 +99,21 @@
     }
 
     //ロック解除
-    $stmt=$db->prepare('UNLOCK TABLES');
+    $stmt = $db->prepare('UNLOCK TABLES');
     $stmt->execute();
 
-    $db=null;
+    $db = null;
 
     //代引きの場合
-    if(isset($_POST['done'])==true){
-      $_SESSION['pay']='cash';
+    if (isset($_POST['done']) == true) {
+      $_SESSION['pay'] = 'cash';
       header('Location: shop_form_done.php');
       exit();
     }
 
     //カード払いの場合
-    if(isset($_POST['card'])==true){
-      $_SESSION['pay']='card';
+    if (isset($_POST['card']) == true) {
+      $_SESSION['pay'] = 'card';
       header('Location: shop_card.php');
       exit();
     }

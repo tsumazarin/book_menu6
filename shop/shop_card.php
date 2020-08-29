@@ -4,7 +4,7 @@
   require('../htmlspecialchars.php');
   require('../dbconnect.php');
 
-  $total=$_SESSION['total'];
+  $total = $_SESSION['total'];
 ?>
 
 <!DOCTYPE html>

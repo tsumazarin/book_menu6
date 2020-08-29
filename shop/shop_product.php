@@ -6,7 +6,7 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if (isset($_SESSION['cus_login']['now'])==true) {
+  if (isset($_SESSION['cus_login']['now']) == true) {
     $login_name=$_SESSION['cus_login']['name'];
   }
 
@@ -30,11 +30,11 @@
     <title>古本のアルジ</title>
   </head>
   <body>
-    <?php if($_SESSION['cus_login']['now']): ?>
+    <?php if ($_SESSION['cus_login']['now']) : ?>
       <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
       <a class="button logout" href="member_logout.php">ログアウト</a>
       <div class="clear"></div>
-    <?php else: ?>
+    <?php else : ?>
       <p>ゲストさん、ようこそ</p><br>
       <a class="button login" href="member_login.php">会員ログイン</a>
       <div class="clear"></div>
@@ -43,9 +43,9 @@
       <h2>古本参照</h2>
     </div>
     <br>
-    <?php if(in_array($rec['code'], $carts)==true): ?>
+    <?php if(in_array($rec['code'], $carts) == true) : ?>
       <p>カートに入っています</p>
-    <?php else: ?>
+    <?php else : ?>
       <a class="button" href="shop_cartin.php?procode=<?php echo h($rec['code']); ?>">
         カートに入れる
       </a>

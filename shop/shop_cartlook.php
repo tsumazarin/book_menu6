@@ -6,46 +6,46 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['cus_login']['now'])==true){
-    $login_name=$_SESSION['cus_login']['name'];
+  if (isset($_SESSION['cus_login']['now']) == true) {
+    $login_name = $_SESSION['cus_login']['name'];
   }
 
-  if(isset($_SESSION['cart'])==true){
-    $carts=$_SESSION['cart'];
-    $number=$_SESSION['number'];
-    $max=count($carts);
-    $_SESSION['max']=$max;
+  if (isset($_SESSION['cart']) == true) {
+    $carts = $_SESSION['cart'];
+    $number = $_SESSION['number'];
+    $max = count($carts);
+    $_SESSION['max'] = $max;
   }else{
-    $max=0;
+    $max = 0;
   }
 
   //カートに入れた古本を取り出す
-  foreach($carts as $cart){
-    $stmt=$db->prepare('SELECT mp.code,mp.name,mp.price,mp.image
+  foreach ($carts as $cart) {
+    $stmt = $db->prepare('SELECT mp.code,mp.name,mp.price,mp.image
       FROM
         mst_product mp
       WHERE
         code=?
     ');
-    $data[0]=$cart;
+    $data[0] = $cart;
     $stmt->execute($data);
-    $rec=$stmt->fetch();
+    $rec = $stmt->fetch();
 
-    $name[]=$rec['name'];
-    $price[]=$rec['price'];
-    $image[]=$rec['image'];
+    $name[] = $rec['name'];
+    $price[] = $rec['price'];
+    $image[] = $rec['image'];
 
   }
 
   //総額を出す
-  $total=0;
-  for($i=0; $i<$max; $i++){
-    $total+=$price[$i]*$number[$i];
+  $total = 0;
+  for ($i = 0; $i < $max; $i++) {
+    $total += $price[$i] * $number[$i];
   }
-  $_SESSION['total']=$total;
+  $_SESSION['total'] = $total;
 
 
-  $db=null;
+  $db = null;
 
 ?>
 
@@ -57,15 +57,15 @@
     <title>古本のアルジ</title>
   </head>
   <body>
-    <?php if($max==0): ?>
+    <?php if ($max == 0) : ?>
       <p>カートに商品が入っていません</p>
       <a class="button" href="shop_list.php">商品一覧へ</a>
-    <?php else: ?>
-      <?php if($_SESSION['cus_login']['now']): ?>
+    <?php else : ?>
+      <?php if ($_SESSION['cus_login']['now']) : ?>
         <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
         <a class="button logout" href="member_logout.php">ログアウト</a>
         <div class="clear"></div>
-      <?php else: ?>
+      <?php else : ?>
         <p>ゲストさん、ようこそ</p><br>
         <a class="button login" href="member_login.php">会員ログイン</a>
         <div class="clear"></div>
@@ -82,7 +82,7 @@
               <td>小計</td>
               <td>削除</td>
             </tr>
-            <?php for($i=0; $i<$max; $i++): ?>
+            <?php for ($i = 0; $i < $max; $i++) : ?>
               <tr>
                 <td>『<?php echo h($name[$i]); ?>』</td>
                 <td><img src="../product/pro_picture/<?php echo h($image[$i]); ?>"></td>
@@ -90,7 +90,7 @@
                 <td>
                   <input type="text" name="number<?php echo h($i); ?>" value="<?php echo h($number[$i]); ?>" size="5">コ
                 </td>
-                <td><?php echo h($price[$i]*$number[$i]); ?>円</td>
+                <td><?php echo h($price[$i] * $number[$i]); ?>円</td>
                 <td><input type="checkbox" name="delete<?php echo h($i); ?>" value="on"></td>
               </tr>
             <?php endfor; ?>
@@ -106,7 +106,7 @@
       </div>
       <br>
       <a class="button" href="shop_form.php">ご購入手続きへ進む</a>
-      <?php if(isset($_SESSION['cus_login']['now'])==true): ?>
+      <?php if (isset($_SESSION['cus_login']['now']) == true) : ?>
          |
         <a class="button" href="shop_kantan_check.php">会員限定かんたん注文へ進む</a>
       <?php endif; ?>
