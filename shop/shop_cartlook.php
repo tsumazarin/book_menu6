@@ -87,7 +87,9 @@
                 <td>『<?php echo h($name[$i]); ?>』</td>
                 <td><img src="../product/pro_picture/<?php echo h($image[$i]); ?>"></td>
                 <td><?php echo h($price[$i]); ?>円</td>
-                <td><input type="text" name="number<?php echo h($i); ?>" value="<?php echo h($number[$i]); ?>" size="5">コ</td>
+                <td>
+                  <input type="text" name="number<?php echo h($i); ?>" value="<?php echo h($number[$i]); ?>" size="5">コ
+                </td>
                 <td><?php echo h($price[$i]*$number[$i]); ?>円</td>
                 <td><input type="checkbox" name="delete<?php echo h($i); ?>" value="on"></td>
               </tr>

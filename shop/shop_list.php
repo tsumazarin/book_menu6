@@ -78,7 +78,8 @@
       <?php if($rec==false){break;} ?>
       <div class="item">
         <a class="item_title" href="shop_product.php?procode=<?php echo h($rec['code']); ?>">
-          <img class="item_image" src="../product/pro_picture/<?php echo h($rec['image']); ?>" alt=""><br>
+          <img class="item_image" src="../product/pro_picture/<?php echo h($rec['image']); ?>">
+          <br>
           『<?php echo h($rec['name']); ?>』　
           <?php echo h($rec['price']); ?>円
         </a>
@@ -88,7 +89,9 @@
     <div class="clear"></div>
     <br>
     <div class="cartlook">
-      <a class="cartlook button" href="shop_cartlook.php">カートを見る</a>
+      <a class="cartlook button" href="shop_cartlook.php">
+        カートを見る
+      </a>
     </div>
     <footer></footer>
   </body>

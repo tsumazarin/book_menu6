@@ -46,7 +46,9 @@
     <?php if(in_array($rec['code'], $carts)==true): ?>
       <p>カートに入っています</p>
     <?php else: ?>
-      <a class="button" href="shop_cartin.php?procode=<?php echo h($rec['code']); ?>">カートに入れる</a>
+      <a class="button" href="shop_cartin.php?procode=<?php echo h($rec['code']); ?>">
+        カートに入れる
+      </a>
       <div class="clear"></div>
     <?php endif; ?>
     <dl>
