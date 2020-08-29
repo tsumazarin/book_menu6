@@ -19,7 +19,7 @@
   $price = $_SESSION['cart_price'];
   $max = count($carts);
 
-  if (isset($_POST['card']) == true || isset($_POST['done']) == true) {
+  if (isset($_POST['card']) == true || isset($_POST['cash']) == true) {
     //占有ロック開始
     $stmt = $db->prepare('LOCK TABLES
       dat_sales WRITE,
@@ -27,6 +27,8 @@
       dat_member WRITE
     ');
     $stmt->execute();
+
+    $last_member_code = 0;
 
     //会員登録情報をデータベス（dat_member）へ
     if ($order == 'order_register') {
@@ -56,7 +58,6 @@
       ));
 
       //購入履歴IDの最後を取り出す
-      $last_member_code = 0;
       $stmt = $db->prepare('SELECT LAST_INSERT_ID()');
       $stmt->execute();
       $rec = $stmt->fetch();
@@ -117,7 +118,7 @@
     $db = null;
 
     //代引きの場合
-    if (isset($_POST['done']) == true) {
+    if (isset($_POST['cash']) == true) {
       $_SESSION['pay'] = 'cash';
       header('Location: shop_form_done.php');
       exit();
@@ -178,7 +179,7 @@
       </dl>
       <div class="cartlook">
         <input class="button" type="button" onclick="history.back()" value="戻る"> |
-        <input class="button" type="submit" name="done" value="代引き"> |
+        <input class="button" type="submit" name="cash" value="代引き"> |
         <input class="button" type="submit" name="card" value="カード払い">
       </div>
     </form>
