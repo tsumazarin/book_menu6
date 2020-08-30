@@ -3,7 +3,6 @@
   session_regenerate_id();
   require('../htmlspecialchars.php');
   require('../dbconnect.php');
-  require('mail_content.php');
 
   $customer_email = $_SESSION['customer']['email'];
   $content = $_SESSION['mail_content'];
