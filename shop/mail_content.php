@@ -73,6 +73,3 @@
   $content .= "メール：info@huruhonichiba.co.jp\n";
   $content .= "□□□□□□□□□□□□□□□□\n";
   //メール終了
-
-  //SESSIONで保存
-  $_SESSION['mail_content'] = $content;
