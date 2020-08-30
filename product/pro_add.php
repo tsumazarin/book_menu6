@@ -55,7 +55,7 @@
       $_SESSION['product']['image'] = $image;
 
       //画像をアップロード
-      move_uploaded_file($image['tmp_name'], "./pro_picture/{$image['name']}");
+      move_uploaded_file($image['tmp_name'], "./pro_picture/".$image['name']);
 
       header('Location: pro_add_check.php');
       exit();
