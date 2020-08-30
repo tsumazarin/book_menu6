@@ -5,20 +5,8 @@
   require('../dbconnect.php');
   require('mail_content.php');
 
-  $customer_name = $_SESSION['customer']['name'];
   $customer_email = $_SESSION['customer']['email'];
-  $customer_postal = $_SESSION['customer']['postal'];
-  $customer_address = $_SESSION['customer']['address'];
-  $customer_tel = $_SESSION['customer']['tel'];
-
-  $order = $_SESSION['customer']['order'];
-
-  $carts = $_SESSION['carts'];
-  $number = $_SESSION['number'];
-  $max = count($carts);
-
-  $pay = $_SESSION['pay'];
-
+  $content = $_SESSION['mail_content'];
 
   //お客様にメール送信
   $title = "ご注文ありがとうございます。";
