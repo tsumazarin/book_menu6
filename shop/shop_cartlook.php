@@ -31,16 +31,16 @@
     $stmt->execute($data);
     $rec = $stmt->fetch();
 
-    $name[] = $rec['name'];
-    $price[] = $rec['price'];
-    $image[] = $rec['image'];
+    $selected_name[] = $rec['name'];
+    $selected_price[] = $rec['price'];
+    $selected_image[] = $rec['image'];
 
   }
 
   //総額を出す
   $total = 0;
   for ($i = 0; $i < $max; $i++) {
-    $total += $price[$i] * $number[$i];
+    $total += $selected_price[$i] * $number[$i];
   }
   $_SESSION['total'] = $total;
 
@@ -84,13 +84,13 @@
             </tr>
             <?php for ($i = 0; $i < $max; $i++) : ?>
               <tr>
-                <td>『<?php echo h($name[$i]); ?>』</td>
-                <td><img src="../product/pro_picture/<?php echo h($image[$i]); ?>"></td>
-                <td><?php echo h($price[$i]); ?>円</td>
+                <td>『<?php echo h($selected_name[$i]); ?>』</td>
+                <td><img src="../product/pro_picture/<?php echo h($selected_image[$i]); ?>"></td>
+                <td><?php echo h($selected_price[$i]); ?>円</td>
                 <td>
                   <input type="text" name="number<?php echo h($i); ?>" value="<?php echo h($number[$i]); ?>" size="5">コ
                 </td>
-                <td><?php echo h($price[$i] * $number[$i]); ?>円</td>
+                <td><?php echo h($selected_price[$i] * $number[$i]); ?>円</td>
                 <td><input type="checkbox" name="delete<?php echo h($i); ?>" value="on"></td>
               </tr>
             <?php endfor; ?>
