@@ -24,15 +24,15 @@
   if (isset($_SESSION['carts']) == true) {
     $carts = $_SESSION['carts'];
     $number = $_SESSION['number'];
-    $price = $_SESSION['cart_price'];
+    $selected_price = $_SESSION['cart_price'];
   }
 
   $carts[] = $rec['code'];
   $number[] = 1;
-  $price[] = $rec['price'];
+  $selected_price[] = $rec['price'];
   $_SESSION['carts'] = $carts;
   $_SESSION['number'] = $number;
-  $_SESSION['cart_price'] = $price;
+  $_SESSION['cart_price'] = $selected_price;
 ?>
 
 <!DOCTYPE html>

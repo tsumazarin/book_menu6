@@ -3,92 +3,25 @@
   session_regenerate_id();
   require('../htmlspecialchars.php');
   require('../dbconnect.php');
+  require('mail_content.php');
 
-  $customer_name = $_SESSION['customer']['name'];
-  $customer_email = $_SESSION['customer']['email'];
-  $customer_postal = $_SESSION['customer']['postal'];
-  $customer_address = $_SESSION['customer']['address'];
-  $customer_tel = $_SESSION['customer']['tel'];
 
-  $order = $_SESSION['customer']['order'];
-
-  $carts = $_SESSION['carts'];
-  $number = $_SESSION['number'];
-  $max = count($carts);
-
-  $pay = $_SESSION['pay'];
-
-  //メールの本文
-  $honbun = '';
-  $honbun .= "{$customer_name}様\n\nこのたびはご注文ありがとうございました。\n";
-  $honbun .= "\n";
-  $honbun .= "ご注文商品\n";
-  $honbun .= "------------\n";
-  for ($i = 0; $i < $max; $i++) {
-    $stmt = $db->prepare('SELECT mp.name,mp.price
-      FROM
-        mst_product mp
-      WHERE
-        code=?
-    ');
-    $data[0] = $carts[$i];
-    $stmt->execute($data);
-    $rec = $stmt->fetch();
-
-    $total = $rec['price']*$number[$i];
-
-    $honbun .= "『{$rec['name']}』";
-    $honbun .= "{$rec['price']}円×";
-    $honbun .= "{$number[$i]}コ＝";
-    $honbun .= "{$total}円\n";
-  }
-  $db = null;
-
-  if ($pay == 'cash') {
-    $honbun .= "送料は無料です。\n";
-    $honbun .= "------------\n";
-    $honbun .= "\n";
-    $honbun .= "代金は以下の口座にお振込ください。\n";
-    $honbun .= "つま銀行 ざりん支店 普通口座 1234567\n";
-    $honbun .= "入金確認が取れ次第、発送させていただきます。\n";
-    $honbun .= "\n";
-  }
-
-  if ($pay == 'card') {
-    $honbun .= "カード支払いが完了しました。\n";
-  }
-
-  if ($order == 'order_register') {
-    $honbun .= "会員登録が完了いたしました。\n";
-    $honbun .= "次回からはメールアドレスとパスワードでログインしてください。\n";
-    $honbun .= "ご注文が簡単にできるようになります。\n";
-    $honbun .= "\n";
-  }
-
-  $honbun .= "□□□□□□□□□□□□□□□□\n";
-  $honbun .= "〜品質そこそこ古本のアルジ〜\n";
-  $honbun .= "\n";
-  $honbun .= "沖縄県那覇市恩納村123-4\n";
-  $honbun .= "電話 090-6060-7843\n";
-  $honbun .= "メール：info@huruhonichiba.co.jp\n";
-  $honbun .= "□□□□□□□□□□□□□□□□\n";
-  //メール終了
 
   //お客様にメール送信
   $title = "ご注文ありがとうございます。";
   $header = 'From: info@huruhonichiba.co.jp';
-  $honbun = html_entity_decode($honbun, ENT_QUOTES, 'utf-8');
+  $content = html_entity_decode($content, ENT_QUOTES, 'utf-8');
   mb_language('Japanese');
   mb_internal_encoding('utf-8');
-  mb_send_mail($customer_email, $title, $honbun, $header);
+  mb_send_mail($customer_email, $title, $content, $header);
 
   //お店にメール送信
   $title = "ご注文ありがとうございます。";
   $header = "From: {$customer_email}";
-  $honbun = html_entity_decode($honbun, ENT_QUOTES, 'utf-8');
+  $content = html_entity_decode($content, ENT_QUOTES, 'utf-8');
   mb_language('Japanese');
   mb_internal_encoding('utf-8');
-  mb_send_mail('info@huruhonichiba.co.jp', $title, $honbun, $header);
+  mb_send_mail('info@huruhonichiba.co.jp', $title, $content, $header);
 
   unset($_SESSION['customer']);
   unset($_SESSION['carts']);
@@ -128,7 +61,7 @@
     <br><br>
     <hr>
     <h4>メール内容</h4>
-    <p><?php echo nl2br(h($honbun)); ?></p>
+    <p><?php echo nl2br(h($content)); ?></p>
     <hr>
   </body>
 </html>
