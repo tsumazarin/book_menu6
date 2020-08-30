@@ -59,13 +59,13 @@
     </div>
     <form action="" method="post">
       <dl>
-        <dt class="input_title">タイトル：<?php echo h($name); ?></dt>
+        <dt class="input_title">タイトル：<?php echo h($product_name); ?></dt>
         <dd></dd>
         <br>
-        <dt class="input_title">価格：<?php echo h($price); ?>円</dt>
+        <dt class="input_title">価格：<?php echo h($product_price); ?>円</dt>
         <dd></dd>
         <br>
-        <img class="input_title" src="./pro_picture/<?php echo h($image['name']); ?>" alt="">
+        <img class="input_title" src="./pro_picture/<?php echo h($product_image['name']); ?>" alt="">
       </dl>
       <br><br>
       <div class="menu">

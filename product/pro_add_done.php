@@ -14,7 +14,7 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
-  $name = $_SESSION['product']['name'];
+  $product_name = $_SESSION['product']['name'];
   unset($_SESSION['product']);
 ?>
 
@@ -32,7 +32,7 @@
     </div>
     <br><br>
     <div class="midashi-wrapper menu">
-      <p>『<?php echo h($name); ?>』を追加しました</p>
+      <p>『<?php echo h($product_name); ?>』を追加しました</p>
     </div>
     <br>
     <a class="button" href="pro_list.php">戻る</a>
