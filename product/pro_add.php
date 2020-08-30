@@ -29,7 +29,7 @@
 
     $image = $_FILES['image'];
     $ext = substr($image['name'], -3);
-    if ($image['size'] = 0) {
+    if ($image['size'] <= 0) {
       $error['image'] = 'blank';
     }elseif ($image['size'] > 10000000) {
       $error['image'] = 'size';
@@ -105,7 +105,7 @@
         <br>
         <dt class="input_title">
           写真：
-          <input type="file" name="image" >
+          <input type="file" name="image">
           <?php if ($error['image'] == 'blank') : ?>
             <p>※　画像を改めて設定してください</p>
           <?php endif; ?>

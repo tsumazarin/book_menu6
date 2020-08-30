@@ -65,7 +65,7 @@
         <dt class="input_title">価格：<?php echo h($product_price); ?>円</dt>
         <dd></dd>
         <br>
-        <img class="input_title" src="./pro_picture/<?php echo h($product_image['name']); ?>" alt="">
+        <img class="input_title" src="./pro_picture/<?php echo h($product_image['name']); ?>" alt="<?php echo h($product_image['name']); ?>">
       </dl>
       <br><br>
       <div class="menu">
