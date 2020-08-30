@@ -6,19 +6,19 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $code=$_SESSION['product']['code'];
+  $code = $_SESSION['product']['code'];
 
-  $stmt=$db->prepare('SELECT * FROM mst_product WHERE code=?');
+  $stmt = $db->prepare('SELECT * FROM mst_product WHERE code=?');
   $stmt->execute(array($code));
-  $rec=$stmt->fetch();
+  $rec = $stmt->fetch();
 ?>
 
 <!DOCTYPE html>

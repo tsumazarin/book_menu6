@@ -5,48 +5,53 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
   //スタッフ追加
-  if(isset($_POST['add'])==true){
+  if (isset($_POST['add']) == true) {
     header('Location: pro_add.php');
     exit();
   }
 
-  if(!empty($_POST['pro_code'])){
-    $_SESSION['product']['code']=$_POST['pro_code'];
+  if (!empty($_POST['pro_code'])) {
+    $_SESSION['product']['code'] = $_POST['pro_code'];
 
     //スタッフ参照
-    if(isset($_POST['display'])==true){
+    if (isset($_POST['display']) == true) {
       header('Location: pro_display.php');
       exit();
     }
 
     //スタッフ修正
-    if(isset($_POST['edit'])==true){
+    if (isset($_POST['edit']) == true) {
       header('Location: pro_edit.php');
       exit();
     }
 
     //スタッフ削除
-    if(isset($_POST['delete'])==true){
+    if (isset($_POST['delete']) == true) {
       header('Location: pro_delete.php');
       exit();
     }
   }
 
   //古本をすべて取り出す
-  $stmt=$db->prepare('SELECT mp.code,mp.name,mp.price FROM mst_product mp WHERE 1');
+  $stmt = $db->prepare('SELECT mp.code,mp.name,mp.price
+    FROM
+      mst_product mp
+    WHERE
+      1
+  ');
   $stmt->execute();
 
 
-  $db=null;
+  $db = null;
 ?>
 
 <!DOCTYPE html>
@@ -62,9 +67,9 @@
       <h2>古本一覧</h2>
     </div>
     <form action="" method="post">
-      <?php while(true): ?>
-        <?php $rec=$stmt->fetch(); ?>
-        <?php if($rec==false){break;} ?>
+      <?php while (true) : ?>
+        <?php $rec = $stmt->fetch(); ?>
+        <?php if ($rec == false) {break;} ?>
         <input type="radio" name="pro_code" value="<?php echo h($rec['code']); ?>">
         <span class="book_title"><?php echo h($rec['name']); ?></span>
         <br>

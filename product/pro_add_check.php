@@ -6,29 +6,37 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $name=$_SESSION['product']['name'];
-  $price=$_SESSION['product']['price'];
-  $image=$_SESSION['product']['image'];
+  $product_name = $_SESSION['product']['name'];
+  $product_price = $_SESSION['product']['price'];
+  $product_image = $_SESSION['product']['image'];
 
-  if(isset($_POST['done'])==true){
+  if (isset($_POST['done']) == true) {
     //スタッフをデータベースに登録
-    if(isset($_SESSION['product']['name'])==true){
-      $name=$_SESSION['product']['name'];
-      $price=$_SESSION['product']['price'];
-      $image=$_SESSION['product']['image'];
+    if (isset($_SESSION['product']['name']) == true) {
+      $stmt = $db->prepare('INSERT INTO
+          mst_product(
+            name,
+            price,
+            image
+          )
+        VALUES
+          (?,?,?)
+      ');
+      $stmt->execute(array(
+        $product_name,
+        $product_price,
+        $product_image['name']
+      ));
 
-      $stmt=$db->prepare('INSERT INTO mst_product(name,price,image) VALUES (?,?,?)');
-      $stmt->execute(array($name,$price,$image['name']));
-
-      $db=null;
+      $db = null;
 
       header('Location: pro_add_done.php');
       exit();

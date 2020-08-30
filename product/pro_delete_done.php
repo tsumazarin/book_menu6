@@ -6,26 +6,26 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $code=$_SESSION['product']['code'];
-  $image=$_SESSION['product']['image'];
+  $code = $_SESSION['product']['code'];
+  $image = $_SESSION['product']['image'];
 
   //画像を削除
-  $stmt=$db->prepare('DELETE FROM mst_product WHERE code=?');
+  $stmt = $db->prepare('DELETE FROM mst_product WHERE code=?');
   $stmt->execute(array($code));
 
   //ファイルから削除
   unlink("./pro_picture/{$image}");
 
   unset($_SESSION['product']);
-  $db=null;
+  $db = null;
 ?>
 
 <!DOCTYPE html>

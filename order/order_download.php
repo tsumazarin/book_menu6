@@ -4,13 +4,13 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 ?>
 
 <!DOCTYPE html>
@@ -36,18 +36,18 @@
         </select>
         年
         <select name="month">
-          <?php for($i=1;$i<13;$i++): ?>
-            <?php if($i<10): ?>
-              <?php $i=sprintf('%02d',$i); ?>
+          <?php for ($i = 1; $i < 13; $i++) : ?>
+            <?php if ($i < 10) : ?>
+              <?php $i = sprintf('%02d', $i); ?>
             <?php endif; ?>
             <option value="<?php echo h($i); ?>"><?php echo h($i); ?></option>
           <?php endfor; ?>
         </select>
         月
         <select name="day">
-          <?php for($i=1;$i<32;$i++): ?>
-            <?php if($i<10): ?>
-              <?php $i=sprintf('%02d',$i); ?>
+          <?php for ($i = 1; $i < 32; $i++) : ?>
+            <?php if ($i < 10) : ?>
+              <?php $i = sprintf('%02d', $i); ?>
             <?php endif; ?>
             <option value="<?php echo h($i); ?>"><?php echo h($i); ?></option>
           <?php endfor; ?>

@@ -5,21 +5,21 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
   //注文ダウンロード
-  if(isset($_POST['download'])==true){
-    $year=$_POST['year'];
-    $month=$_POST['month'];
-    $day=$_POST['day'];
+  if (isset($_POST['download']) == true) {
+    $year = $_POST['year'];
+    $month = $_POST['month'];
+    $day = $_POST['day'];
 
-    $stmt=$db->prepare('SELECT
+    $stmt = $db->prepare('SELECT
         ds.code,
         ds.date,
         ds.code_member,
@@ -42,35 +42,35 @@
         AND substr(ds.date,1,4)=?
         AND substr(ds.date,6,2)=?
         AND substr(ds.date,9,2)=?');
-    $stmt->execute(array($year,$month,$day));
+    $stmt->execute(array($year, $month, $day));
 
-    $db=null;
+    $db = null;
 
-    $csv="注文コード、注文日時、会員番号、お名前、メール、郵便番号、住所、TEL、商品コード、商品名、価格、数量";
-    $csv.="\n";
-    while(true){
-      $rec=$stmt->fetch();
-      if($rec==false){
+    $csv = "注文コード、注文日時、会員番号、お名前、メール、郵便番号、住所、TEL、商品コード、商品名、価格、数量";
+    $csv .= "\n";
+    while (true) {
+      $rec = $stmt->fetch();
+      if ($rec == false) {
         break;
       }
-      $csv.="{$rec['code']},";
-      $csv.="{$rec['date']},";
-      $csv.="{$rec['code_member']},";
-      $csv.="{$rec['cus_name']},";
-      $csv.="{$rec['email']},";
-      $csv.="{$rec['postal']},";
-      $csv.="{$rec['address']},";
-      $csv.="{$rec['tel']},";
-      $csv.="{$rec['code_product']},";
-      $csv.="{$rec['pro_name']},";
-      $csv.="{$rec['price']},";
-      $csv.="{$rec['quantity']},";
-      $csv.="\n";
+      $csv .= "{$rec['code']},";
+      $csv .= "{$rec['date']},";
+      $csv .= "{$rec['code_member']},";
+      $csv .= "{$rec['cus_name']},";
+      $csv .= "{$rec['email']},";
+      $csv .= "{$rec['postal']},";
+      $csv .= "{$rec['address']},";
+      $csv .= "{$rec['tel']},";
+      $csv .= "{$rec['code_product']},";
+      $csv .= "{$rec['pro_name']},";
+      $csv .= "{$rec['price']},";
+      $csv .= "{$rec['quantity']},";
+      $csv .= "\n";
 
       //chumon.csv書き込み
-      $file=fopen('./chumon.csv','w');
-      $csv2=mb_convert_encoding($csv,'SJIS','utf-8');
-      fputs($file,$csv2);
+      $file = fopen('./chumon.csv', 'w');
+      $csv2 = mb_convert_encoding($csv, 'SJIS', 'utf-8');
+      fputs($file, $csv2);
       fclose($file);
     }
   }else{

@@ -6,36 +6,48 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $name=$_SESSION['product']['name'];
-  $price=$_SESSION['product']['price'];
-  $image=$_SESSION['product']['image'];
+  $name = $_SESSION['product']['name'];
+  $price = $_SESSION['product']['price'];
+  $image = $_SESSION['product']['image'];
 
   //「修正」ボタン
-  if(isset($_POST['done'])==true){
-    $code=$_SESSION['product']['code'];
-    $name=$_SESSION['product']['name'];
-    $price=$_SESSION['product']['price'];
-    $image=$_SESSION['product']['image'];
-    $old_image=$_SESSION['product']['old_image'];
+  if (isset($_POST['done']) == true) {
+    $code = $_SESSION['product']['code'];
+    $name = $_SESSION['product']['name'];
+    $price = $_SESSION['product']['price'];
+    $image = $_SESSION['product']['image'];
+    $old_image = $_SESSION['product']['old_image'];
 
     //修正
-    $stmt=$db->prepare('UPDATE mst_product SET name=?,price=?,image=? WHERE code=?');
-    $stmt->execute(array($name,$price,$image['name'],$code));
+    $stmt = $db->prepare('UPDATE mst_product
+      SET
+        name=?,
+        price=?,
+        image=?
+      WHERE
+        code=?
+    ');
+    $stmt->execute(array(
+      $name,
+      $price,
+      $image['name'],
+      $code
+    ));
 
-    if($image['name']!=$old_image){
+    if ($image['name'] != $old_image) {
       //古い画像を削除
       unlink("./pro_picture/{$old_image}");
     }
 
-    $db=null;
+    $db = null;
 
     header('Location: pro_edit_done.php');
     exit();

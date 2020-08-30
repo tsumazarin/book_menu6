@@ -6,23 +6,28 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $code=$_SESSION['product']['code'];
+  $code = $_SESSION['product']['code'];
 
   //古本を取り出す
-  $stmt=$db->prepare('SELECT mp.code,mp.name,mp.image FROM mst_product mp WHERE code=?');
+  $stmt = $db->prepare('SELECT mp.code,mp.name,mp.image
+    FROM
+      mst_product mp
+    WHERE
+      code=?
+  ');
   $stmt->execute(array($code));
-  $rec=$stmt->fetch();
+  $rec = $stmt->fetch();
 
-  if(isset($_POST['done'])==true){
-    $_SESSION['product']['image']=$rec['image'];
+  if (isset($_POST['done']) == true) {
+    $_SESSION['product']['image'] = $rec['image'];
     header('Location: pro_delete_done.php');
     exit();
   }
