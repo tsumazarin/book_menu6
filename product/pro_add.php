@@ -29,7 +29,7 @@
 
     $image = $_FILES['image'];
     $ext = substr($image['name'], -3);
-    if ($image['size'] <= 0) {
+    if (empty($image['name'])) {
       $error['image'] = 'blank';
     }elseif ($image['size'] > 10000000) {
       $error['image'] = 'size';
