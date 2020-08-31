@@ -29,7 +29,7 @@
 
     $image = $_FILES['image'];
     $ext = substr($image['name'], -3);
-    if ($image['size']<=0) {
+    if ($image['size']<= 0) {
       $error['image'] = 'blank';
     }elseif ($image['size'] > 10000000) {
       $error['image'] = 'size';
@@ -122,7 +122,7 @@
       <?php if ($moved) : ?>
         <p>Successfully uploaded</p>
       <?php else : ?>
-        <p>Not uploaded because of error #<?php echo h($_FILES["file"]["error"]); ?></p>
+        <p>Not uploaded because of error #<?php echo h($_FILES["image"]["error"]); ?></p>
       <?php endif; ?>
       <div class="menu">
         <input class="button" type="button" onclick="history.back()" value="戻る"> |
