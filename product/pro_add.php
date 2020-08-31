@@ -29,7 +29,7 @@
 
     $image = $_FILES['image'];
     $ext = substr($image['name'], -3);
-    if (empty($image['name'])) {
+    if ($image['size']<=0) {
       $error['image'] = 'blank';
     }elseif ($image['size'] > 10000000) {
       $error['image'] = 'size';
@@ -57,7 +57,7 @@
       //画像をアップロード
       $moved = move_uploaded_file($image['tmp_name'], "./pro_picture/{$image['name']}");
 
-      
+
     }
   }
 
