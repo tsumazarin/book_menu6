@@ -55,9 +55,10 @@
       $_SESSION['product']['image'] = $image;
 
       //画像をアップロード
-      $moved = move_uploaded_file($image['tmp_name'], "./pro_picture/{$image['name']}");
+      move_uploaded_file($image['tmp_name'], "./pro_picture/{$image['name']}");
 
-
+      header('Location: pro_add_check.php');
+      exit();
     }
   }
 
@@ -119,11 +120,6 @@
         </dd>
       </dl>
       <br>
-      <?php if ($moved) : ?>
-        <p>Successfully uploaded</p>
-      <?php else : ?>
-        <p>Not uploaded because of error #<?php echo h($_FILES["image"]["error"]); ?></p>
-      <?php endif; ?>
       <div class="menu">
         <input class="button" type="button" onclick="history.back()" value="戻る"> |
         <input class="button" type="submit" name="check" value="確認">
