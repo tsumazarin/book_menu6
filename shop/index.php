@@ -1,4 +1,6 @@
 <?php
   require('../dbconnect.php');
-  phpinfo();
+
+  header('Location: shop_list.php');
+  exit();
 ?>
