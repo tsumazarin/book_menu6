@@ -65,7 +65,13 @@
         <br>
         <dt class="input_title">スタッフ名</dt>
         <dd>
-          <input class="input_content" type="text" name="name" size="35" value="<?php echo h($rec['name']); ?>">
+          <input
+            class="input_content"
+            type="text"
+            name="name"
+            size="35"
+            value="<?php echo h($rec['name']); ?>"
+          >
           <?php if ($error['name'] == 'blank') : ?>
             <p>※　お名前を記入してください</p>
           <?php endif; ?>
@@ -73,7 +79,13 @@
         <br>
         <dt class="input_title">パスワードを再設定してください</dt>
         <dd>
-          <input class="input_content" type="password" name="pass" size="15" value="<?php echo h($_POST['pass']); ?>">
+          <input
+            class="input_content"
+            type="password"
+            name="pass"
+            size="15"
+            value="<?php echo h($_POST['pass']); ?>"
+          >
           <?php if ($error['pass'] == 'blank') : ?>
             <p>※　パスワードを記入してください</p>
           <?php endif; ?>
@@ -81,14 +93,26 @@
         <br>
         <dt class="input_title">パスワードをもう１度入力してください</dt>
         <dd>
-          <input class="input_content" type="password" name="pass2" size="15" value="">
+          <input
+            class="input_content"
+            type="password"
+            name="pass2"
+            size="15"
+            value=""
+          >
           <?php if ($error['pass'] == 'wrong') : ?>
             <p>※　パスワードが一致しません</p>
           <?php endif; ?>
         </dd>
       </dl>
       <div class="menu">
-        <input class="button" type="button" onclick="history.back()" value="戻る"> |
+        <input
+          class="button"
+          type="button"
+          onclick="history.back()"
+          value="戻る"
+        >
+         |
         <input class="button" type="submit" name="check" value="確認">
       </div>
     </form>

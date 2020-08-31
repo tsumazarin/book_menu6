@@ -63,7 +63,12 @@
         <br>
         <dt class="input_title">このスタッフのパスワードを入力してください</dt>
         <dd>
-          <input class="input_content" type="password" name="pass" value="<?php echo h($_POST['pass']); ?>">
+          <input
+            class="input_content"
+            type="password"
+            name="pass"
+            value="<?php echo h($_POST['pass']); ?>"
+          >
           <?php if ($error['pass'] == 'blank') : ?>
             <p>※　パスワードを入力してください</p>
           <?php endif; ?>
@@ -76,7 +81,13 @@
       <p class="register menu">このスタッフを削除してよろしいでしょうか？</p>
       <br>
       <div class="menu">
-        <input class="button" type="button" onclick="history.back()" value="戻る"> |
+        <input
+          class="button"
+          type="button"
+          onclick="history.back()"
+          value="戻る"
+        >
+         |
         <input class="button" type="submit" name="done" value="削除">
       </div>
     </form>

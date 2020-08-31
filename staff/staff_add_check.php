@@ -63,7 +63,13 @@
       </dl>
       <br><br>
       <div class="menu">
-        <input class="button" type="button" onclick="history.back()" value="戻る"> |
+        <input
+          class="button"
+          type="button"
+          onclick="history.back()"
+          value="戻る"
+        >
+         |
         <input class="button" type="submit" name="done" value="追加">
       </div>
     </form>
