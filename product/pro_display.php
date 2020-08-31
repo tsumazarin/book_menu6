@@ -14,10 +14,10 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
-  $code = $_SESSION['product']['code'];
+  $product_code = $_SESSION['product']['code'];
 
   $stmt = $db->prepare('SELECT * FROM mst_product WHERE code=?');
-  $stmt->execute(array($code));
+  $stmt->execute(array($product_code));
   $rec = $stmt->fetch();
 ?>
 

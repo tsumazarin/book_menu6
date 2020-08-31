@@ -14,15 +14,15 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
-  $code = $_SESSION['product']['code'];
-  $image = $_SESSION['product']['image'];
+  $product_code = $_SESSION['product']['code'];
+  $product_image = $_SESSION['product']['image'];
 
   //画像を削除
   $stmt = $db->prepare('DELETE FROM mst_product WHERE code=?');
-  $stmt->execute(array($code));
+  $stmt->execute(array($product_code));
 
   //ファイルから削除
-  unlink("./pro_picture/{$image}");
+  unlink("./pro_picture/{$product_image}");
 
   unset($_SESSION['product']);
   $db = null;

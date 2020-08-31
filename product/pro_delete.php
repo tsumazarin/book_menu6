@@ -14,7 +14,7 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
-  $code = $_SESSION['product']['code'];
+  $product_code = $_SESSION['product']['code'];
 
   //古本を取り出す
   $stmt = $db->prepare('SELECT mp.code,mp.name,mp.image
@@ -23,7 +23,7 @@
     WHERE
       code=?
   ');
-  $stmt->execute(array($code));
+  $stmt->execute(array($product_code));
   $rec = $stmt->fetch();
 
   if (isset($_POST['done']) == true) {

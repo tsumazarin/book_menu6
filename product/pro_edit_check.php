@@ -14,17 +14,17 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
-  $name = $_SESSION['product']['name'];
-  $price = $_SESSION['product']['price'];
-  $image = $_SESSION['product']['image'];
+  $product_name = $_SESSION['product']['name'];
+  $product_price = $_SESSION['product']['price'];
+  $product_image = $_SESSION['product']['image'];
 
   //「修正」ボタン
   if (isset($_POST['done']) == true) {
-    $code = $_SESSION['product']['code'];
-    $name = $_SESSION['product']['name'];
-    $price = $_SESSION['product']['price'];
-    $image = $_SESSION['product']['image'];
-    $old_image = $_SESSION['product']['old_image'];
+    $product_code = $_SESSION['product']['code'];
+    $product_name = $_SESSION['product']['name'];
+    $product_price = $_SESSION['product']['price'];
+    $product_image = $_SESSION['product']['image'];
+    $product_old_image = $_SESSION['product']['old_image'];
 
     //修正
     $stmt = $db->prepare('UPDATE mst_product
@@ -36,15 +36,15 @@
         code=?
     ');
     $stmt->execute(array(
-      $name,
-      $price,
-      $image['name'],
-      $code
+      $product_name,
+      $product_price,
+      $product_image['name'],
+      $product_code
     ));
 
-    if ($image['name'] != $old_image) {
+    if ($product_image['name'] != $product_old_image) {
       //古い画像を削除
-      unlink("./pro_picture/{$old_image}");
+      unlink("./pro_picture/{$product_old_image}");
     }
 
     $db = null;
@@ -69,13 +69,13 @@
     </div>
     <form action="" method="post">
       <dl>
-        <dt class="input_title">タイトル：<?php echo h($name); ?></dt>
+        <dt class="input_title">タイトル：<?php echo h($product_name); ?></dt>
         <dd></dd>
         <br>
-        <dt class="input_title">価格：<?php echo h($price); ?>円</dt>
+        <dt class="input_title">価格：<?php echo h($product_price); ?>円</dt>
         <dd></dd>
         <br>
-        <img class="input_title" src="./pro_picture/<?php echo h($image['name']); ?>" alt="">
+        <img class="input_title" src="./pro_picture/<?php echo h($product_image['name']); ?>" alt="">
       </dl>
       <br><br>
       <div class="menu">

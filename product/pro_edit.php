@@ -14,7 +14,7 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
-  $code = $_SESSION['product']['code'];
+  $product_code = $_SESSION['product']['code'];
 
   //選択された古本を取り出す
   $stmt = $db->prepare('SELECT mp.name,mp.price,mp.image
@@ -23,7 +23,7 @@
     WHERE
       code=?
   ');
-  $stmt->execute(array($code));
+  $stmt->execute(array($product_code));
   $rec = $stmt->fetch();
 
   $_SESSION['product']['old_image'] = $rec['image'];
@@ -36,20 +36,20 @@
       $error['name'] = 'blank';
     }
 
-    $price = mb_convert_kana($_POST['price'], 'n', 'utf8');
+    $product_price = mb_convert_kana($_POST['price'], 'n', 'utf8');
     if ($_POST['price'] == '') {
       $error['price'] = 'blank';
-    }elseif (is_numeric($price) == false) {
+    }elseif (is_numeric($product_price) == false) {
       $error['price'] = 'wrong';
-    }elseif ($price < 10 || 10000 < $price) {
+    }elseif ($product_price < 10 || 10000 < $product_price) {
       $error['price'] = 'size';
     }
 
-    $image = $_FILES['image'];
-    $ext = substr($image['name'], -3);
-    if ($image['size'] <= 0) {
+    $product_image = $_FILES['image'];
+    $ext = substr($product_image['name'], -3);
+    if ($product_image['size'] <= 0) {
       $error['image'] = 'blank';
-    }elseif ($image['size'] > 10000000) {
+    }elseif ($product_image['size'] > 10000000) {
       $error['image'] = 'size';
     }elseif (
       $ext != 'PEG'
@@ -69,11 +69,11 @@
     //エラーなし
     if (empty($error)) {
       $_SESSION['product']['name'] = $_POST['name'];
-      $_SESSION['product']['price'] = $price;
-      $_SESSION['product']['image'] = $image;
+      $_SESSION['product']['price'] = $product_price;
+      $_SESSION['product']['image'] = $product_image;
 
       //画像をアップロード
-      move_uploaded_file($image['tmp_name'], "./pro_picture/{$image['name']}");
+      move_uploaded_file($product_image['tmp_name'], "./pro_picture/{$product_image['name']}");
 
       header('Location: pro_edit_check.php');
       exit();
@@ -96,7 +96,7 @@
     </div>
     <form action="" method="post" enctype="multipart/form-data">
       <dl>
-        <dt class="input_title">古本コード：<?php echo h($code); ?></dt>
+        <dt class="input_title">古本コード：<?php echo h($product_code); ?></dt>
         <dd></dd>
         <br>
         <dt class="input_title">タイトル</dt>
