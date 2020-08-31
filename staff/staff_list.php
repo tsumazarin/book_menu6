@@ -5,48 +5,48 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
   //スタッフ追加
-  if(isset($_POST['add'])==true){
+  if (isset($_POST['add']) == true) {
     header('Location: staff_add.php');
     exit();
   }
 
-  if(!empty($_POST['staff_code'])){
-    $_SESSION['staff']['code']=$_POST['staff_code'];
+  if (!empty($_POST['staff_code'])) {
+    $_SESSION['staff']['code'] = $_POST['staff_code'];
 
     //スタッフ参照
-    if(isset($_POST['display'])==true){
+    if (isset($_POST['display']) == true) {
       header('Location: staff_display.php');
       exit();
     }
 
     //スタッフ修正
-    if(isset($_POST['edit'])==true){
+    if (isset($_POST['edit']) == true) {
       header('Location: staff_edit.php');
       exit();
     }
 
     //スタッフ削除
-    if(isset($_POST['delete'])==true){
+    if (isset($_POST['delete']) == true) {
       header('Location: staff_delete.php');
       exit();
     }
   }
 
   //スタッフ全員を取り出す
-  $stmt=$db->prepare('SELECT ms.code,ms.name FROM mst_staff ms WHERE 1');
+  $stmt = $db->prepare('SELECT ms.code,ms.name FROM mst_staff ms WHERE 1');
   $stmt->execute();
 
 
-  $db=null;
+  $db = null;
 ?>
 
 <!DOCTYPE html>
@@ -63,9 +63,9 @@
     </div>
 
     <form action="" method="post">
-      <?php while(true): ?>
-        <?php $rec=$stmt->fetch(); ?>
-        <?php if($rec==false){break;} ?>
+      <?php while (true) : ?>
+        <?php $rec = $stmt->fetch(); ?>
+        <?php if ($rec == false) {break;} ?>
         <input type="radio" name="staff_code" value="<?php echo h($rec['code']); ?>">
         <?php echo h($rec['name']); ?>
         <br>

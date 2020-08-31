@@ -6,26 +6,33 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $name=$_SESSION['staff']['name'];
+  $staff_name = $_SESSION['staff']['name'];
 
-  if(isset($_POST['done'])==true){
+  if (isset($_POST['done']) == true) {
     //スタッフをデータベースに登録
-    if(isset($_SESSION['staff']['name'])==true){
-      $name=$_SESSION['staff']['name'];
-      $pass=$_SESSION['staff']['pass'];
+    if (isset($_SESSION['staff']['name']) == true) {
+      $staff_name = $_SESSION['staff']['name'];
+      $staff_pass = $_SESSION['staff']['pass'];
 
-      $stmt=$db->prepare('INSERT INTO mst_staff(name,password) VALUES (?,?)');
-      $stmt->execute(array($name,$pass));
+      $stmt = $db->prepare('INSERT INTO
+          mst_staff(name,password)
+        VALUES
+          (?,?)
+      ');
+      $stmt->execute(array(
+        $staff_name,
+        $staff_pass
+      ));
 
-      $db=null;
+      $db = null;
 
       header('Location: staff_add_done.php');
       exit();
@@ -48,7 +55,7 @@
     </div>
     <form action="" method="post">
       <dl>
-        <dt class="menu">お名前：<?php echo h($name); ?></dt>
+        <dt class="menu">お名前：<?php echo h($staff_name); ?></dt>
         <dd></dd>
         <br>
         <dt class="menu">パスワード：【表示されません】</dt>

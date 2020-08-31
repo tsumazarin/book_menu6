@@ -6,38 +6,38 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $staff_code=$_SESSION['staff']['code'];
+  $staff_code = $_SESSION['staff']['code'];
 
   //選択されたスタッフを取り出す
-  $stmt=$db->prepare('SELECT ms.name FROM mst_staff ms WHERE code=?');
+  $stmt = $db->prepare('SELECT ms.name FROM mst_staff ms WHERE code=?');
   $stmt->execute(array($staff_code));
-  $rec=$stmt->fetch();
+  $rec = $stmt->fetch();
 
-  $db=null;
+  $db = null;
 
   //「確認」送信
-  if(isset($_POST['check'])==true){
-    if($_POST['name']==''){
-      $error['name']='blank';
+  if (isset($_POST['check']) == true) {
+    if ($_POST['name'] == '') {
+      $error['name'] = 'blank';
     }
-    if($_POST['pass']==''){
-      $error['pass']='blank';
+    if ($_POST['pass'] == '') {
+      $error['pass'] = 'blank';
     }
-    if($_POST['pass']!=$_POST['pass2']){
-      $error['pass']='wrong';
+    if ($_POST['pass'] != $_POST['pass2']) {
+      $error['pass'] = 'wrong';
     }
     //エラーなし
-    if(empty($error)){
-      $_SESSION['staff']['name']=$_POST['name'];
-      $_SESSION['staff']['pass']=md5($_POST['pass']);
+    if (empty($error)) {
+      $_SESSION['staff']['name'] = $_POST['name'];
+      $_SESSION['staff']['pass'] = md5($_POST['pass']);
 
       header('Location: staff_edit_check.php');
       exit();
@@ -66,7 +66,7 @@
         <dt class="input_title">スタッフ名</dt>
         <dd>
           <input class="input_content" type="text" name="name" size="35" value="<?php echo h($rec['name']); ?>">
-          <?php if($error['name']=='blank'): ?>
+          <?php if ($error['name'] == 'blank') : ?>
             <p>※　お名前を記入してください</p>
           <?php endif; ?>
         </dd>
@@ -74,7 +74,7 @@
         <dt class="input_title">パスワードを再設定してください</dt>
         <dd>
           <input class="input_content" type="password" name="pass" size="15" value="<?php echo h($_POST['pass']); ?>">
-          <?php if($error['pass']=='blank'): ?>
+          <?php if ($error['pass'] == 'blank') : ?>
             <p>※　パスワードを記入してください</p>
           <?php endif; ?>
         </dd>
@@ -82,7 +82,7 @@
         <dt class="input_title">パスワードをもう１度入力してください</dt>
         <dd>
           <input class="input_content" type="password" name="pass2" size="15" value="">
-          <?php if($error['pass']=='wrong'): ?>
+          <?php if ($error['pass'] == 'wrong') : ?>
             <p>※　パスワードが一致しません</p>
           <?php endif; ?>
         </dd>

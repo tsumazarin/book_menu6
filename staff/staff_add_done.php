@@ -5,15 +5,15 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $name=$_SESSION['staff']['name'];
+  $staff_name = $_SESSION['staff']['name'];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
       <h2>スタッフ追加</h2>
     </div>
     <div class="midashi-wrapper menu">
-      <p><?php echo h($name); ?>さんを追加しました</p>
+      <p><?php echo h($staff_name); ?>さんを追加しました</p>
     </div>
 
     <br>

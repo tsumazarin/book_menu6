@@ -6,19 +6,19 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $code=$_SESSION['staff']['code'];
+  $staff_code = $_SESSION['staff']['code'];
 
   //スタッフを削除
-  $stmt=$db->prepare('DELETE FROM mst_staff WHERE code=?');
-  $stmt->execute(array($code));
+  $stmt = $db->prepare('DELETE FROM mst_staff WHERE code=?');
+  $stmt->execute(array($staff_code));
 ?>
 
 <!DOCTYPE html>

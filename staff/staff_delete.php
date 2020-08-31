@@ -6,34 +6,39 @@
 
   //ログイン確認
   session_regenerate_id(true);
-  if(isset($_SESSION['login']['now'])==false){
+  if (isset($_SESSION['login']['now']) == false) {
     header('Location: ../staff_login/staff_login.php');
     exit();
   }
 
-  $login_name=$_SESSION['login']['name'];
-  $login_code=$_SESSION['login']['code'];
+  $login_name = $_SESSION['login']['name'];
+  $login_code = $_SESSION['login']['code'];
 
-  $code=$_SESSION['staff']['code'];
+  $staff_code = $_SESSION['staff']['code'];
 
   //スタッフを取り出す
-  $stmt=$db->prepare('SELECT ms.code,ms.name,ms.password FROM mst_staff ms WHERE code=?');
-  $stmt->execute(array($code));
-  $rec=$stmt->fetch();
+  $stmt = $db->prepare('SELECT ms.code,ms.name,ms.password
+    FROM
+      mst_staff ms
+    WHERE
+      code=?
+  ');
+  $stmt->execute(array($staff_code));
+  $rec = $stmt->fetch();
 
-  if(isset($_POST['done'])==true){
-    if($_POST['pass']==''){
-      $error['pass']='blank';
-    }else if(md5($_POST['pass'])!=$rec['password']){
-      $error['pass']='wrong';
+  if (isset($_POST['done']) == true) {
+    if ($_POST['pass'] == '') {
+      $error['pass'] = 'blank';
+    }elseif (md5($_POST['pass']) != $rec['password']) {
+      $error['pass'] = 'wrong';
     }
-    if(empty($error)){
+    if (empty($error)) {
       header('Location: staff_delete_done.php');
       exit();
     }
   }
 
-  $db=null;
+  $db = null;
 ?>
 
 <!DOCTYPE html>
@@ -59,10 +64,10 @@
         <dt class="input_title">このスタッフのパスワードを入力してください</dt>
         <dd>
           <input class="input_content" type="password" name="pass" value="<?php echo h($_POST['pass']); ?>">
-          <?php if($error['pass']=='blank'): ?>
+          <?php if ($error['pass'] == 'blank') : ?>
             <p>※　パスワードを入力してください</p>
           <?php endif; ?>
-          <?php if($error['pass']=='wrong'): ?>
+          <?php if ($error['pass'] == 'wrong') : ?>
             <p>※　パスワードが間違っています</p>
           <?php endif; ?>
         </dd>
