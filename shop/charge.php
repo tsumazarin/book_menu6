@@ -5,9 +5,7 @@ session_regenerate_id();
 require_once('../vendor/autoload.php');
 
 // APIのシークレットキー
-\Stripe\Stripe::setApiKey('
-  sk_test_51HKKZoJPLEKFzxmlNjsgzQnUC60yd1eLBu2OmkmHT88q3xR3eiRjM0CVrHWAC5EGtHvqcvr0sJNVcXp7Zru5xMMG00k9QcfoKZ
-');
+\Stripe\Stripe::setApiKey('sk_test_51HKKZoJPLEKFzxmlNjsgzQnUC60yd1eLBu2OmkmHT88q3xR3eiRjM0CVrHWAC5EGtHvqcvr0sJNVcXp7Zru5xMMG00k9QcfoKZ');
 
 $total = $_SESSION['total'];
 
