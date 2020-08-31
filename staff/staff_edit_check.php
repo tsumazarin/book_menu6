@@ -65,13 +65,7 @@
         <dd></dd>
       </dl>
       <div class="do_login">
-        <input
-          class="button"
-          type="button"
-          onclick="history.back()"
-          value="戻る"
-        >
-         |
+        <input class="button" type="button" onclick="history.back()" value="戻る"> |
         <input class="button" type="submit" name="done" value="修正">
       </div>
     </form>

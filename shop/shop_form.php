@@ -129,12 +129,17 @@
           <?php endif; ?>
         </dd>
         <br><br>
-        <input class="radio" type="radio" name="order" value="order_once">今回だけの注文<br>
-        <input class="radio" type="radio" name="order" value="order_register"checked>会員登録して注文
-        <input class="button register" type="submit" name="register" value="会員登録する"><br>
+        <input class="radio" type="radio" name="order" value="order_once">
+        今回だけの注文<br>
+        <input class="radio" type="radio" name="order" value="order_register" checked>
+        会員登録して注文
+        <input class="button register" type="submit" name="register" value="会員登録する">
+        <br>
         <?php if ($order['register'] == 'on') : ?>
           <br>
-          <p class="register">※　会員登録する方は以下の項目も入力してください</p><br>
+          <p class="register">
+            ※　会員登録する方は以下の項目も入力してください
+          </p><br>
           <dt class="input_title">パスワードを設定してください</dt>
           <dd>
             <input class="input_content" type="password" name="pass" size="15" value="<?php echo h($_POST['pass']); ?>">
@@ -162,7 +167,9 @@
           </dt>
           <select name="birth">
             <?php for ($i = 2020; 1910 < $i; $i -= 10) : ?>
-              <option value="<?php echo h($i); ?>"><?php echo h($i); ?>年代</option>
+              <option value="<?php echo h($i); ?>">
+                <?php echo h($i); ?>年代
+              </option>
             <?php endfor; ?>
           </select>
         <?php endif; ?>

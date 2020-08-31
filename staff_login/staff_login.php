@@ -58,12 +58,7 @@
       <dl>
         <dt class="input_title">スタッフコード</dt>
         <dd>
-          <input
-            class="input_content"
-            type="text"
-            name="code"
-            value="<?php echo h($_POST['code']); ?>"
-          >
+          <input class="input_content" type="text" name="code" value="<?php echo h($_POST['code']); ?>">
           <?php if ($error['login'] == 'blank') : ?>
             <p>※　スタッフコードとパスワード両方ご記入ください</p>
           <?php endif; ?>
@@ -74,12 +69,7 @@
         <br>
         <dt class="input_title">パスワード</dt>
         <dd>
-          <input
-            class="input_content"
-            type="password"
-            name="pass"
-            value="<?php echo h($_POST['pass']); ?>"
-          >
+          <input class="input_content" type="password" name="pass" value="<?php echo h($_POST['pass']); ?>">
         </dd>
       </dl>
       <input class="button mail" type="submit" name="check" value="ログイン">

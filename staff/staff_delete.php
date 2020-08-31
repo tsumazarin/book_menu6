@@ -63,12 +63,7 @@
         <br>
         <dt class="input_title">このスタッフのパスワードを入力してください</dt>
         <dd>
-          <input
-            class="input_content"
-            type="password"
-            name="pass"
-            value="<?php echo h($_POST['pass']); ?>"
-          >
+          <input class="input_content" type="password" name="pass" value="<?php echo h($_POST['pass']); ?>">
           <?php if ($error['pass'] == 'blank') : ?>
             <p>※　パスワードを入力してください</p>
           <?php endif; ?>

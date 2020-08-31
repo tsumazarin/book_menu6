@@ -85,13 +85,17 @@
             <?php for ($i = 0; $i < $max; $i++) : ?>
               <tr>
                 <td>『<?php echo h($selected_name[$i]); ?>』</td>
-                <td><img src="../product/pro_picture/<?php echo h($selected_image[$i]); ?>"></td>
+                <td>
+                  <img src="../product/pro_picture/<?php echo h($selected_image[$i]); ?>">
+                </td>
                 <td><?php echo h($selected_price[$i]); ?>円</td>
                 <td>
                   <input type="text" name="number<?php echo h($i); ?>" value="<?php echo h($number[$i]); ?>" size="5">コ
                 </td>
                 <td><?php echo h($selected_price[$i] * $number[$i]); ?>円</td>
-                <td><input type="checkbox" name="delete<?php echo h($i); ?>" value="on"></td>
+                <td>
+                  <input type="checkbox" name="delete<?php echo h($i); ?>" value="on">
+                </td>
               </tr>
             <?php endfor; ?>
           </table>
@@ -108,7 +112,9 @@
       <a class="button" href="shop_form.php">ご購入手続きへ進む</a>
       <?php if (isset($_SESSION['cus_login']['now']) == true) : ?>
          |
-        <a class="button" href="shop_kantan_check.php">会員限定かんたん注文へ進む</a>
+        <a class="button" href="shop_kantan_check.php">
+          会員限定かんたん注文へ進む
+        </a>
       <?php endif; ?>
     <?php endif; ?>
     <footer></footer>

@@ -55,13 +55,7 @@
       <dl>
         <dt class="input_title">スタッフ名を追加してください</dt>
         <dd>
-          <input
-            class="input_content"
-            type="text"
-            name="name"
-            size="35"
-            value="<?php echo h($_POST['name']); ?>"
-          >
+          <input class="input_content" type="text" name="name" size="35" value="<?php echo h($_POST['name']); ?>">
           <?php if ($error['name'] == 'blank') : ?>
             <p>※　お名前を記入してください</p>
           <?php endif; ?>
@@ -69,13 +63,7 @@
         <br>
         <dt class="input_title">パスワードを入力してください</dt>
         <dd>
-          <input
-            class="input_content"
-            type="password"
-            name="pass"
-            size="15"
-            value="<?php echo h($_POST['pass']); ?>"
-          >
+          <input class="input_content" type="password" name="pass" size="15" value="<?php echo h($_POST['pass']); ?>">
           <?php if ($error['pass'] == 'blank') : ?>
             <p>※　パスワードを記入してください</p>
           <?php endif; ?>
@@ -91,13 +79,7 @@
       </dl>
       <br>
       <div class="menu">
-        <input
-          class="button"
-          type="button"
-          onclick="history.back()"
-          value="戻る"
-        >
-         |
+        <input class="button" type="button" onclick="history.back()" value="戻る"> |
         <input class="button" type="submit" name="check" value="確認">
       </div>
     </form>
