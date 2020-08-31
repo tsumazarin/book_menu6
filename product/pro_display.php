@@ -14,6 +14,7 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
+  //選択された古本コードを取得
   $product_code = $_SESSION['product']['code'];
 
   $stmt = $db->prepare('SELECT * FROM mst_product WHERE code=?');

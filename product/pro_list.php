@@ -13,7 +13,7 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
-  //スタッフ追加
+  //古本追加
   if (isset($_POST['add']) == true) {
     header('Location: pro_add.php');
     exit();
@@ -22,19 +22,19 @@
   if (!empty($_POST['pro_code'])) {
     $_SESSION['product']['code'] = $_POST['pro_code'];
 
-    //スタッフ参照
+    //古本参照
     if (isset($_POST['display']) == true) {
       header('Location: pro_display.php');
       exit();
     }
 
-    //スタッフ修正
+    //古本修正
     if (isset($_POST['edit']) == true) {
       header('Location: pro_edit.php');
       exit();
     }
 
-    //スタッフ削除
+    //古本削除
     if (isset($_POST['delete']) == true) {
       header('Location: pro_delete.php');
       exit();
@@ -69,7 +69,7 @@
     <form action="" method="post">
       <?php while (true) : ?>
         <?php $rec = $stmt->fetch(); ?>
-        <?php if ($rec == false) {break;} ?>
+        <?php if ($rec == false) break; ?>
         <input type="radio" name="pro_code" value="<?php echo h($rec['code']); ?>">
         <span class="book_title"><?php echo h($rec['name']); ?></span>
         <br>

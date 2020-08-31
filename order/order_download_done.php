@@ -5,6 +5,7 @@
 
   //ログイン確認
   session_regenerate_id(true);
+
   if (isset($_SESSION['login']['now']) == false) {
     header('Location: staff_login.php');
     exit();
@@ -42,17 +43,21 @@
         AND substr(ds.date,1,4)=?
         AND substr(ds.date,6,2)=?
         AND substr(ds.date,9,2)=?');
+
     $stmt->execute(array($year, $month, $day));
 
     $db = null;
 
+    //注文ダウンロードの内容
     $csv = "注文コード、注文日時、会員番号、お名前、メール、郵便番号、住所、TEL、商品コード、商品名、価格、数量";
     $csv .= "\n";
     while (true) {
       $rec = $stmt->fetch();
+
       if ($rec == false) {
         break;
       }
+
       $csv .= "{$rec['code']},";
       $csv .= "{$rec['date']},";
       $csv .= "{$rec['code_member']},";
@@ -73,6 +78,7 @@
       fputs($file, $csv2);
       fclose($file);
     }
+
   }else{
     header('Location: order_download.php');
     exit();

@@ -14,11 +14,14 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
+  //古本のタイトル、値段、画像を取得
   $product_name = $_SESSION['product']['name'];
   $product_price = $_SESSION['product']['price'];
   $product_image = $_SESSION['product']['image'];
 
+  //「追加」ボタンを押して・・・
   if (isset($_POST['done']) == true) {
+
     //スタッフをデータベースに登録
     if (isset($_SESSION['product']['name']) == true) {
       $stmt = $db->prepare('INSERT INTO

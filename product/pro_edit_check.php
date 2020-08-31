@@ -14,11 +14,12 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
+  //修正後の古本タイトル、値段、画像を取得
   $product_name = $_SESSION['product']['name'];
   $product_price = $_SESSION['product']['price'];
   $product_image = $_SESSION['product']['image'];
 
-  //「修正」ボタン
+  //「修正」ボタンを押して・・・
   if (isset($_POST['done']) == true) {
     $product_code = $_SESSION['product']['code'];
     $product_name = $_SESSION['product']['name'];
@@ -42,8 +43,9 @@
       $product_code
     ));
 
+    //古い画像を削除
     if ($product_image['name'] != $product_old_image) {
-      //古い画像を削除
+
       unlink("./pro_picture/{$product_old_image}");
     }
 

@@ -14,9 +14,9 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
+  //選択された古本を取り出す
   $product_code = $_SESSION['product']['code'];
 
-  //選択された古本を取り出す
   $stmt = $db->prepare('SELECT mp.name,mp.price,mp.image
     FROM
       mst_product mp
@@ -26,16 +26,22 @@
   $stmt->execute(array($product_code));
   $rec = $stmt->fetch();
 
+  //選択された画像をセッションに保存
   $_SESSION['product']['old_image'] = $rec['image'];
 
   $db = null;
 
-  //「確認」送信
+  //「確認」ボタンを押して・・・
   if (isset($_POST['check']) == true) {
+
+    //エラー確認
+
+    //タイトルチェック
     if ($_POST['name'] == '') {
       $error['name'] = 'blank';
     }
 
+    //値段チェック
     $product_price = mb_convert_kana($_POST['price'], 'n', 'utf8');
     if ($_POST['price'] == '') {
       $error['price'] = 'blank';
@@ -45,8 +51,10 @@
       $error['price'] = 'size';
     }
 
+    //画像チェック
     $product_image = $_FILES['image'];
     $ext = substr($product_image['name'], -3);
+
     if ($product_image['size'] <= 0) {
       $error['image'] = 'blank';
     }elseif ($product_image['size'] > 10000000) {

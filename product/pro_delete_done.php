@@ -14,10 +14,11 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
+  //選択された古本コード、画像を取得
   $product_code = $_SESSION['product']['code'];
   $product_image = $_SESSION['product']['image'];
 
-  //画像を削除
+  //選択された古本を削除
   $stmt = $db->prepare('DELETE FROM mst_product WHERE code=?');
   $stmt->execute(array($product_code));
 

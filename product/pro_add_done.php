@@ -14,6 +14,7 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
+  //古本のタイトルを取得
   $product_name = $_SESSION['product']['name'];
   unset($_SESSION['product']);
 ?>

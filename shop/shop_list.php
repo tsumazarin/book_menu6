@@ -9,8 +9,6 @@
     $login_name = $_SESSION['cus_login']['name'];
   }
 
-
-
   //古本をすべて取り出す
   $stmt = $db->prepare('SELECT
       mp.code,mp.name,mp.price,mp.image
@@ -49,7 +47,7 @@
     </div>
     <?php while(true) : ?>
       <?php $rec = $stmt->fetch(); ?>
-      <?php if ($rec == false) {break;} ?>
+      <?php if ($rec == false) break; ?>
       <div class="item">
         <a class="item_title" href="shop_product.php?procode=<?php echo h($rec['code']); ?>">
           <img class="item_image" src="../product/pro_picture/<?php echo h($rec['image']); ?>">

@@ -3,9 +3,12 @@
   require('../htmlspecialchars.php');
   require('../dbconnect.php');
 
+  //「ログイン」ボタンを押して・・・
   if (isset($_POST['check']) == true) {
-    //エラーの検査
+
+    //ログインチェック
     if ($_POST['code'] != '' && $_POST['pass'] != '') {
+
       $login_code = mb_convert_kana($_POST['code'], 'n', 'utf8');
       $login_pass = mb_convert_kana($_POST['pass'], 'n', 'utf8');
       $login_pass = md5($login_pass);
@@ -27,7 +30,10 @@
 
       $db = null;
 
+      //ログイン成功かどうか
       if ($rec == true) {
+
+        //ログインしたスタッフをセッションに保存
         $_SESSION['login']['now'] = 1;
         $_SESSION['login']['code'] = $rec['code'];
         $_SESSION['login']['name'] = $rec['name'];

@@ -65,7 +65,7 @@
     <form action="" method="post">
       <?php while (true) : ?>
         <?php $rec = $stmt->fetch(); ?>
-        <?php if ($rec == false) {break;} ?>
+        <?php if ($rec == false) break; ?>
         <input type="radio" name="staff_code" value="<?php echo h($rec['code']); ?>">
         <?php echo h($rec['name']); ?>
         <br>

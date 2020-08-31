@@ -11,13 +11,17 @@
   $login_name = $_SESSION['login']['name'];
   $login_code = $_SESSION['login']['code'];
 
-  //「確認」送信
+  //「確認」ボタンを押して・・・
   if (isset($_POST['check']) == true) {
+
     //エラー確認
+
+    //タイトルチェック
     if ($_POST['name'] == '') {
       $error['name'] = 'blank';
     }
 
+    //値段チェック
     $price = mb_convert_kana($_POST['price'], 'n', 'utf8');
     if ($_POST['price'] == '') {
       $error['price'] = 'blank';
@@ -27,6 +31,7 @@
       $error['price'] = 'size';
     }
 
+    //画像チェック
     $image = $_FILES['image'];
     $ext = substr($image['name'], -3);
     if ($image['size']<= 0) {
