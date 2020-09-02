@@ -47,7 +47,7 @@
   <body>
     <p><?php echo h($login_name); ?>さん、ログイン中</p>
     <div class="midashi-wrapper">
-      <h2>古本削除</h2>
+      <h2>古本削除 | 古本販売サイト</h2>
     </div>
     <form action="" method="post">
       <dl>

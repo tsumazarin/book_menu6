@@ -138,7 +138,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style.css?v=2">
-    <title>古本のアルジ</title>
+    <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
     <h2>お客様情報</h2>
