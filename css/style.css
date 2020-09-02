@@ -9,11 +9,11 @@ body{
   font-size:1.7rem;
   font-family:"Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   width:100%;
-  
+  background-color:#D0B0FF;
 }
 
 header{
-
+  background-color:#D0B0FF;
   padding:50px 0;
 }
 
@@ -30,7 +30,7 @@ h2 {
   margin-right:58px;
   font-size:3.5rem;
   color:#fff;
-  background-color:#D0B0FF;
+  background-color:#9933FF;
 }
 
 dl, form{
@@ -45,7 +45,7 @@ dt, p{
   border-radius:20px;
   font-size:1.5rem;
   color:#fff;
-  background-color:#D0B0FF;
+  background-color:#9933FF;
 }
 
 a{
@@ -64,7 +64,7 @@ img{
 table{
   width:900px;
   color:#fff;
-  background-color:#D0B0FF;
+  background-color:#9933FF;
   padding:50px 50px;
   border-radius:20px;
 }
@@ -78,7 +78,7 @@ table{
 
 .button{
   color:#fff;
-  background-color:#D0B0FF;
+  background-color:#9933FF;
   padding:20px 30px;
   border-radius:5px;
 }
@@ -87,7 +87,7 @@ table{
 .welcome{
   display:inline-block;
   color:#DCDCDC;
-  background-color:#D0B0FF;
+  background-color:#9933FF;
   margin-left:30px;
   padding:20px 30px;
   border-radius:10px;
@@ -117,7 +117,7 @@ table{
   padding:60px 0;
   text-align:center;
   margin:20px 20px auto;
-  background-color:#D0B0FF;
+  background-color:#9933FF;
   border-radius:15px;
 }
 
