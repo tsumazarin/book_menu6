@@ -107,7 +107,7 @@
   <body>
     <header>
       <h1>古本のアルジ</h1><br>
-      <p>〜品質そこそこ 古本販売サイト〜</p>
+      <section>　〜品質そこそこ 古本販売サイト〜</section>
     </header>
     <main>
       <h2 class="heading">注文確定</h2><br>
