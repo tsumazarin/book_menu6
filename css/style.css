@@ -39,6 +39,7 @@ footer{
 
 h1 {
   font-size: 4.0rem;
+  padding-bottom: -40px;
 }
 
 dt, p {
