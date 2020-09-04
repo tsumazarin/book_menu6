@@ -32,7 +32,7 @@
   </head>
   <body>
     <header>
-      <h1>古本のアルジ</h1><br>
+      <h1>古本のアルジ</h1>
       <p>〜品質そこそこ 古本販売サイト〜</p><br>
       <?php if ($_SESSION['cus_login']['now']) : ?>
         <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
