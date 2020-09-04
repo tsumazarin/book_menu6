@@ -52,22 +52,40 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ログイン中</p>
-    <div class="midashi-wrapper">
+    <header>
+      <h1>古本のアルジ</h1><br>
+      <section>　〜品質そこそこ 古本販売サイト〜</section><br>
+      <p><?php echo h($login_name); ?>さん、ログイン中</p>
+    </header>
+    <main>
       <h2>スタッフ修正</h2>
-    </div>
-    <form action="" method="post">
-      <dl>
-        <dt class="input_title">お名前：<?php echo h($staff_name); ?></dt>
-        <dd></dd>
-        <br>
-        <dt class="input_title">パスワード：【表示されません】</dt>
-        <dd></dd>
-      </dl>
-      <div class="do_login">
-        <input class="button" type="button" onclick="history.back()" value="戻る"> |
-        <input class="button" type="submit" name="done" value="修正">
+      <form action="" method="post">
+        <table class="staff-form">
+          <tr>
+            <td>お名前</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($staff_name); ?>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>パスワード</td>
+            <td>
+              <span class="border-bottom">
+                【表示されません】
+              </span>
+            </td>
+          </tr>
+        </table>
+        <input class="button black" type="button" onclick="history.back()" value="戻る"> |
+        <input class="button black" type="submit" name="done" value="修正">
+      </form>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
       </div>
-    </form>
+    </footer>
   </body>
 </html>

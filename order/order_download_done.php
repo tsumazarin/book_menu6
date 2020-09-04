@@ -95,20 +95,27 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ログイン中</p>
-    <div class="midashi-wrapper">
+    <header>
+      <h1>古本のアルジ</h1><br>
+      <section>　〜品質そこそこ 古本販売サイト〜</section><br>
+      <p><?php echo h($login_name); ?>さん、ログイン中</p>
+    </header>
+    <main>
       <h2>注文ダウンロード</h2>
-    </div>
-    <br>
-    <br>
-    <div class="midashi-wrapper">
-      <a class="button menu" href="chumon.csv">注文データダウンロード</a>
+      <br>
+      <br>
+      <a class="button black" href="chumon.csv">注文データダウンロード</a>
       <br><br><br>
-      <a class="button menu" href="../staff_login/staff_top.php">トップメニューへ</a>
+      <a class="button black" href="../staff_login/staff_top.php">トップメニューへ</a>
       <br><br><br>
-    </div>
-    <p class="register">以下の内容をダウンロードします</p>
-    <hr>
-    <?php echo nl2br(h($csv)); ?>
+      <p>以下の内容をダウンロードします</p>
+      <hr>
+      <?php echo nl2br(h($csv)); ?>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
+      </div>
+    </footer>
   </body>
 </html>

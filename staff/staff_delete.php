@@ -49,42 +49,54 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ログイン中</p>
-    <div class="midashi-wrapper">
+    <header>
+      <h1>古本のアルジ</h1><br>
+      <section>　〜品質そこそこ 古本販売サイト〜</section><br>
+      <p><?php echo h($login_name); ?>さん、ログイン中</p>
+    </header>
+    <main>
       <h2>スタッフ削除</h2>
-    </div>
-    <form action="" method="post">
-      <dl>
-        <dt class="input_title">スタッフコード：<?php echo h($rec['code']); ?></dt>
-        <dd></dd>
-        <br>
-        <dt class="input_title">スタッフ名：<?php echo h($rec['name']); ?></dt>
-        <dd></dd>
-        <br>
-        <dt class="input_title">このスタッフのパスワードを入力してください</dt>
-        <dd>
-          <input class="input_content" type="password" name="pass" value="<?php echo h($_POST['pass']); ?>">
-          <?php if ($error['pass'] == 'blank') : ?>
-            <p>※　パスワードを入力してください</p>
-          <?php endif; ?>
-          <?php if ($error['pass'] == 'wrong') : ?>
-            <p>※　パスワードが間違っています</p>
-          <?php endif; ?>
-        </dd>
-      </dl>
-      <br>
-      <p class="register menu">このスタッフを削除してよろしいでしょうか？</p>
-      <br>
-      <div class="menu">
-        <input
-          class="button"
-          type="button"
-          onclick="history.back()"
-          value="戻る"
-        >
-         |
-        <input class="button" type="submit" name="done" value="削除">
+      <form action="" method="post">
+        <table>
+          <tr>
+            <td>スタッフコード</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($rec['code']); ?>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>スタッフ名</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($rec['name']); ?>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>このスタッフのパスワードを入力してください</td>
+            <td>
+              <input type="password" name="pass" value="<?php echo h($_POST['pass']); ?>">
+              <?php if ($error['pass'] == 'blank') : ?>
+                <p>※　パスワードを入力してください</p>
+              <?php endif; ?>
+              <?php if ($error['pass'] == 'wrong') : ?>
+                <p>※　パスワードが間違っています</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+        </table>
+        <p>このスタッフを削除してよろしいでしょうか？</p><br>
+        <input class="button black" type="button" onclick="history.back()" value="戻る">
+          |
+        <input class="button black" type="submit" name="done" value="削除">
+      </form>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
       </div>
-    </form>
+    </footer>
   </body>
 </html>

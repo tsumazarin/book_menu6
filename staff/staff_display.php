@@ -29,21 +29,45 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ログイン中</p>
-    <div class="midashi-wrapper">
+    <header>
+      <h1>古本のアルジ</h1><br>
+      <section>　〜品質そこそこ 古本販売サイト〜</section><br>
+      <p><?php echo h($login_name); ?>さん、ログイン中</p>
+    </header>
+    <main>
       <h2>スタッフ参照</h2>
-    </div>
-    <dl>
-      <dt class="menu">スタッフコード：<?php echo h($rec['code']); ?></dt>
-      <dd></dd>
-      <br>
-      <dt class="menu">スタッフ名：<?php echo h($rec['name']); ?></dt>
-      <dd></dd>
-      <br>
-      <dt class="menu">パスワード：【表示されません】</dt>
-      <dd></dd>
-    </dl>
-    <br><br>
-    <a class="button" href="staff_list.php">スタッフ一覧へ</a>
+      <table class="staff-form">
+        <tr>
+          <td>スタッフコード</td>
+          <td>
+            <span class="border-bottom">
+              <?php echo h($rec['code']); ?>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>スタッフ名</td>
+          <td>
+            <span class="border-bottom">
+              <?php echo h($rec['name']); ?>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>パスワード</td>
+          <td>
+            <span class="border-bottom">
+              【表示されません】
+            </span>
+          </td>
+        </tr>
+      </table>
+      <a class="button black" href="staff_list.php">スタッフ一覧へ</a>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
+      </div>
+    </footer>
   </body>
 </html>

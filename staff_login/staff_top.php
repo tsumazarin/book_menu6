@@ -21,27 +21,34 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ログイン中</p>
-    <a class="button logout" href="staff_logout.php">ログアウト</a>
-    <div class="midashi-wrapper">
+    <header>
+      <h1>古本のアルジ</h1><br>
+      <section>　〜品質そこそこ 古本販売サイト〜</section><br>
+      <p><?php echo h($login_name); ?>さん、ログイン中</p><br>
+      <a class="button white" href="staff_logout.php">ログアウト</a>
+    </header>
+    <main>
       <h2>管理トップメニュー</h2>
-    </div>
-    <br><br>
-    <div class="midashi-wrapper">
-      <a class="button menu" href="../staff/staff_list.php">
+      <br><br>
+      <a class="button black" href="../staff/staff_list.php">
         スタッフ管理
       </a>
       <dd></dd>
       <br><br>
-      <a class="button menu" href="../product/pro_list.php">
+      <a class="button black" href="../product/pro_list.php">
         古本管理
       </a><br>
       <dd></dd>
       <br><br>
-      <a class="button menu" href="../order/order_download.php">
+      <a class="button black" href="../order/order_download.php">
         注文ダウンロード
       </a>
       <dd></dd>
-    </div>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
+      </div>
+    </footer>
   </body>
 </html>

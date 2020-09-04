@@ -54,43 +54,59 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ログイン中</p>
-    <div class="midashi-wrapper">
+    <header>
+      <h1>古本のアルジ</h1><br>
+      <section>　〜品質そこそこ 古本販売サイト〜</section><br>
+      <p><?php echo h($login_name); ?>さん、ログイン中</p>
+    </header>
+    <main>
       <h2>スタッフ修正</h2>
-    </div>
-    <form action="" method="post">
-      <dl>
-        <dt class="input_title">スタッフコード：<?php echo h($staff_code); ?></dt>
-        <dd></dd>
-        <br>
-        <dt class="input_title">スタッフ名</dt>
-        <dd>
-          <input class="input_content" type="text" name="name" size="35" value="<?php echo h($rec['name']); ?>">
-          <?php if ($error['name'] == 'blank') : ?>
-            <p>※　お名前を記入してください</p>
-          <?php endif; ?>
-        </dd>
-        <br>
-        <dt class="input_title">パスワードを再設定してください</dt>
-        <dd>
-          <input class="input_content" type="password" name="pass" size="15" value="<?php echo h($_POST['pass']); ?>">
-          <?php if ($error['pass'] == 'blank') : ?>
-            <p>※　パスワードを記入してください</p>
-          <?php endif; ?>
-        </dd>
-        <br>
-        <dt class="input_title">パスワードをもう１度入力してください</dt>
-        <dd>
-          <input class="input_content" type="password" name="pass2" size="15" value="">
-          <?php if ($error['pass'] == 'wrong') : ?>
-            <p>※　パスワードが一致しません</p>
-          <?php endif; ?>
-        </dd>
-      </dl>
-      <div class="menu">
-        <input class="button" type="button" onclick="history.back()" value="戻る"> |
-        <input class="button" type="submit" name="check" value="確認">
+      <form action="" method="post">
+        <table class="staff-form">
+          <tr>
+            <td>スタッフコード</td>
+            <td>
+              <span class="bold">
+                <?php echo h($staff_code); ?>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>スタッフ名</td>
+            <td>
+              <input type="text" name="name" size="15" value="<?php echo h($rec['name']); ?>">
+              <?php if ($error['name'] == 'blank') : ?>
+                <p>※　お名前を記入してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>パスワードを再設定してください</td>
+            <td>
+              <input type="password" name="pass" size="15" value="<?php echo h($_POST['pass']); ?>">
+              <?php if ($error['pass'] == 'blank') : ?>
+                <p>※　パスワードを記入してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>パスワードをもう１度入力してください</td>
+            <td>
+              <input type="password" name="pass2" size="15" value="">
+              <?php if ($error['pass'] == 'wrong') : ?>
+                <p>※　パスワードが一致しません</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+        </table>
+        <input class="button black" type="button" onclick="history.back()" value="戻る"> |
+        <input class="button black" type="submit" name="check" value="確認">
+      </form>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
       </div>
-    </form>
+    </footer>
   </body>
 </html>

@@ -21,12 +21,14 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ログイン中</p>
-    <div class="midashi-wrapper">
+    <header>
+      <h1>古本のアルジ</h1><br>
+      <section>　〜品質そこそこ 古本販売サイト〜</section><br>
+      <p><?php echo h($login_name); ?>さん、ログイン中</p>
+    </header>
+    <main>
       <h2>注文ダウンロード</h2>
-    </div>
-    <div class="midashi-wrapper menu">
-      <p class="register">ダウンロードしたい注文日を選んでください</p>
+      <p>ダウンロードしたい注文日を選んでください</p>
       <form action="order_download_done.php" method="post">
         <select name="year">
           <option value="2017">2017</option>
@@ -54,8 +56,13 @@
         </select>
         日<br>
         <br>
-        <input class="button" type="submit" name="download" value="ダウンロードする">
+        <input class="button black" type="submit" name="download" value="ダウンロードする">
       </form>
-    </div>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
+      </div>
+    </footer>
   </body>
 </html>

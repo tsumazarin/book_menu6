@@ -29,14 +29,21 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ログイン中</p>
-    <div class="midashi-wrapper">
+    <header>
+      <h1>古本のアルジ</h1><br>
+      <section>　〜品質そこそこ 古本販売サイト〜</section><br>
+      <p><?php echo h($login_name); ?>さん、ログイン中</p>
+    </header>
+    <main>
       <h2>スタッフ削除</h2>
-    </div>
-    <div class="midashi-wrapper menu">
       <p>削除完了しました</p>
-    </div>
-    <br>
-    <a class="button" href="staff_list.php">スタッフ一覧へ</a>
+      <br>
+      <a class="button black" href="staff_list.php">スタッフ一覧へ</a>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
+      </div>
+    </footer>
   </body>
 </html>

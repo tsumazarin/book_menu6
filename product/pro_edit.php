@@ -98,57 +98,74 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ログイン中</p>
-    <div class="midashi-wrapper">
+    <header>
+      <h1>古本のアルジ</h1><br>
+      <section>　〜品質そこそこ 古本販売サイト〜</section><br>
+      <p><?php echo h($login_name); ?>さん、ログイン中</p>
+    </header>
+    <main>
       <h2>古本修正</h2>
-    </div>
-    <form action="" method="post" enctype="multipart/form-data">
-      <dl>
-        <dt class="input_title">古本コード：<?php echo h($product_code); ?></dt>
-        <dd></dd>
-        <br>
-        <dt class="input_title">タイトル</dt>
-        <dd>
-          <input class="input_content" type="text" name="name" size="35" value="<?php echo h($rec['name']); ?>">
-          <?php if($error['name']=='blank'): ?>
-            <p>※　タイトルを記入してください</p>
-          <?php endif; ?>
-        </dd>
-        <br>
-        <dt class="input_title">価格を再設定してください</dt>
-        <dd>
-          <input class="input_content" type="text" name="price" size="15" value="<?php echo h($rec['price']); ?>">円
-          <?php if ($error['price'] == 'blank') : ?>
-            <p>※　価格を記入してください</p>
-          <?php endif; ?>
-          <?php if ($error['price'] == 'wrong') : ?>
-            <p>※　数字で記入してください</p>
-          <?php endif; ?>
-          <?php if ($error['price'] == 'size') : ?>
-            <p>※　10円以上10000円以内で設定してください</p>
-          <?php endif; ?>
-        </dd>
-        <br>
-        <dt class="input_title">
-          写真：
-          <input type="file" name="image">
-          <?php if ($error['image'] == 'blank') : ?>
-            <p>※　画像を改めて設定してください</p>
-          <?php endif; ?>
-          <?php if ($error['image'] == 'size') : ?>
-            <p>※　画像が大きすぎます</p>
-          <?php endif; ?>
-          <?php if ($error['image'] == 'type') : ?>
-            <p>※　「JPEG」「PNG」「JPG」「jpeg」「png」「jpg」いずれかの拡張子で指定してください</p>
-          <?php endif; ?>
-        </dt>
-        <dd></dd>
-      </dl>
-      <br><br>
-      <div class=" menu">
-        <input class="button" type="button" onclick="history.back()" value="戻る"> |
-        <input class="button" type="submit" name="check" value="確認">
+      <form action="" method="post" enctype="multipart/form-data">
+        <table class="product-form">
+          <tr>
+            <td>古本コード</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($product_code); ?>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>タイトル</td>
+            <td>
+              <input type="text" name="name" size="15" value="<?php echo h($rec['name']); ?>">
+              <?php if($error['name']=='blank'): ?>
+                <p>※　タイトルを記入してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>価格を再設定してください</td>
+            <td>
+              <input type="text" id="price" name="price" size="15" value="<?php echo h($rec['price']); ?>">
+              <label for="price">円</label>
+              <?php if ($error['price'] == 'blank') : ?>
+                <p>※　価格を記入してください</p>
+              <?php endif; ?>
+              <?php if ($error['price'] == 'wrong') : ?>
+                <p>※　数字で記入してください</p>
+              <?php endif; ?>
+              <?php if ($error['price'] == 'size') : ?>
+                <p>※　10円以上10000円以内で設定してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>写真</td>
+            <td>
+              <input type="file" name="image">
+              <?php if ($error['image'] == 'blank') : ?>
+                <p>※　画像を改めて設定してください</p>
+              <?php endif; ?>
+              <?php if ($error['image'] == 'size') : ?>
+                <p>※　画像が大きすぎます</p>
+              <?php endif; ?>
+              <?php if ($error['image'] == 'type') : ?>
+                <p>※　「JPEG」「PNG」「JPG」「jpeg」「png」「jpg」いずれかの拡張子で指定してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+        </table>
+        <div>
+          <input class="button black" type="button" onclick="history.back()" value="戻る"> |
+          <input class="button black" type="submit" name="check" value="確認">
+        </div>
+      </form>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
       </div>
-    </form>
+    </footer>
   </body>
 </html>
