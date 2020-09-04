@@ -38,9 +38,9 @@ footer{
 }
 
 h1 {
-  display: inline;
+  display: inline-block;
   font-size: 4.0rem;
-
+  padding-bottom: -10px;
 }
 
 dt, p {
