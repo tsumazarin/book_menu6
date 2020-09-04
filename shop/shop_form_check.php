@@ -141,48 +141,91 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <h2>お客様情報</h2>
-    <form action="" method="post">
-      <dl>
-        <dt>お名前：<?php echo h($name); ?></dt>
-        <dd></dd>
-        <br>
-        <dt>メールアドレス：<?php echo h($email); ?></dt>
-        <dd></dd>
-        <br>
-        <dt>郵便番号：<?php echo h($postal); ?></dt>
-        <dd></dd>
-        <br>
-        <dt>住所：<?php echo h($address); ?></dt>
-        <dd></dd>
-        <br>
-        <dt>電話番号：<?php echo h($tel); ?></dt>
-        <dd></dd>
-        <?php if (isset($_SESSION['customer']['pass']) == true) : ?>
-          <br>
-          <dt>パスワード：【表示されません】</dt>
-          <dd></dd>
-          <br>
-          <dt>
-            性別：
-            <?php if ($gender == 1) : ?>
-              男性
-            <?php else : ?>
-              女性
-            <?php endif; ?>
-          </dt>
-          <dd></dd>
-          <br>
-          <dt>生まれ年：<?php echo h($birth); ?>年代</dt>
-          <dd></dd>
-        <?php endif; ?>
-      </dl>
-      <div class="cartlook">
-        <input class="button" type="button" onclick="history.back()" value="戻る"> |
-        <input class="button" type="submit" name="cash" value="代引き"> |
-        <input class="button" type="submit" name="card" value="カード払い">
+    <header>
+      <h1>古本のアルジ</h1>
+    </header>
+    <main>
+      <h2 class="heading">お客様情報</h2>
+      <form action="" method="post">
+        <table class="customer-form-check">
+          <tr>
+            <td>お名前</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($name); ?>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($email); ?>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($postal); ?>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($address); ?>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($tel); ?>
+              </span>
+            </td>
+          </tr>
+          <?php if (isset($_SESSION['customer']['pass']) == true) : ?>
+            <tr>
+              <td>パスワード</td>
+              <td>
+                <span class="border-bottom">
+                  【表示されません】
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>性別</td>
+              <td>
+                <?php if ($gender == 1) : ?>
+                  <span class="border-bottom">男性</span>
+                <?php else : ?>
+                  <span class="border-bottom">女性</span>
+                <?php endif; ?>
+              </td>
+            </tr>
+            <tr>
+              <td>生まれ年</td>
+              <td>
+                <span class="border-bottom">
+                  <?php echo h($birth); ?>年代
+                </span>
+              </td>
+            </tr>
+          <?php endif; ?>
+        </table>
+        <input class="button black" type="button" onclick="history.back()" value="戻る"> |
+        <input class="button black" type="submit" name="cash" value="代引き"> |
+        <input class="button black" type="submit" name="card" value="カード払い">
+      </form>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
       </div>
-    </form>
-    <footer></footer>
+    </footer>
   </body>
 </html>

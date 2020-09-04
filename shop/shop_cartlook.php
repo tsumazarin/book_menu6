@@ -57,23 +57,26 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <?php if ($max == 0) : ?>
-      <p>カートに商品が入っていません</p>
-      <a class="button" href="shop_list.php">商品一覧へ</a>
-    <?php else : ?>
+    <header>
+      <h1>古本のアルジ</h1>
       <?php if ($_SESSION['cus_login']['now']) : ?>
         <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
-        <a class="button logout" href="member_logout.php">ログアウト</a>
-        <div class="clear"></div>
+        <a class="button white" href="member_logout.php">ログアウト</a>
       <?php else : ?>
         <p>ゲストさん、ようこそ</p><br>
-        <a class="button login" href="member_login.php">会員ログイン</a>
-        <div class="clear"></div>
+        <a class="button white" href="member_login.php">会員ログイン</a>
       <?php endif; ?>
-      <div class="midashi-wrapper">
-        <h2>カートの中身</h2>
-        <form class="cart_form" action="number_change.php" method="post">
-          <table border="5px solid #D0B0FF">
+    </header>
+    <main>
+      <h2 class="heading">カートの中身</h2>
+      <?php if ($max == 0) : ?>
+        <div class="clearfix">
+          <p>カートに商品が入っていません</p>
+          <a class="button black" href="shop_list.php">商品一覧へ</a>
+        </div>
+      <?php else : ?>
+        <form action="number_change.php" method="post">
+          <table class="black" border="5px solid #fff">
             <tr>
               <td>タイトル</td>
               <td>表紙</td>
@@ -99,24 +102,27 @@
               </tr>
             <?php endfor; ?>
           </table>
-          <br><br>
-          <div class="change">
-            <p>合計：<?php echo h($total); ?>円</p>
+          <div class="total-and-number">
+            <p class="bold">合計：<?php echo h($total); ?>円</p>
             <p>※　個数は10コ以内でお願いします</p><br>
-            <input class="button" type="button" onclick="history.back()" value="戻る"> |
-            <input class="button" type="submit" value="個数変更">
+            <input class="button black" type="submit" value="個数変更">
           </div>
         </form>
-      </div>
-      <br>
-      <a class="button" href="shop_form.php">ご購入手続きへ進む</a>
-      <?php if (isset($_SESSION['cus_login']['now']) == true) : ?>
-         |
-        <a class="button" href="shop_kantan_check.php">
-          会員限定かんたん注文へ進む
-        </a>
+        <br>
+        <input class="button black" type="button" onclick="history.back()" value="戻る"> |
+        <a class="button black" href="shop_form.php">ご購入手続きへ進む</a>
+        <?php if (isset($_SESSION['cus_login']['now']) == true) : ?>
+          |
+          <a class="button black" href="shop_kantan_check.php">
+            会員限定かんたん注文へ進む
+          </a>
+        <?php endif; ?>
       <?php endif; ?>
-    <?php endif; ?>
-    <footer></footer>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
+      </div>
+    </footer>
   </body>
 </html>

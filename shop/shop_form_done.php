@@ -105,15 +105,16 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <div class="midashi-wrapper">
-      <h2>お客様情報</h2>
-    </div>
-    <div class="midashi-wrapper mail">
+    <header>
+      <h1>古本のアルジ</h1>
+    </header>
+    <main>
+      <h2 class="heading">注文確定</h2><br>
       <p>
         <?php echo h($customer_name); ?>様、ご注文ありがとうございました。<br>
         <?php echo h($customer_email); ?>にメールを送りましたのでご確認ください。<br>
         商品は以下の住所に発送させていただきます。<br>
-        〒　<?php echo h($customer_postal); ?><br>
+        〒 <?php echo h($customer_postal); ?><br>
         住所：<?php echo h($customer_address); ?><br>
         電話番号：<?php echo h($customer_tel); ?><br>
         <?php if ($order == 'order_register') : ?>
@@ -122,13 +123,18 @@
           ご注文が簡単にできるようになります。<br>
         <?php endif; ?>
       </p>
-    </div>
-    <br><br><br>
-    <a class="button" href="shop_list.php">古本一覧へ</a><br>
-    <br><br>
-    <hr>
-    <h4>メール内容</h4>
-    <p><?php echo nl2br(h($content)); ?></p>
-    <hr>
+      <br><br><br>
+      <a class="button black" href="shop_list.php">古本一覧へ</a><br>
+      <br><br>
+      <hr>
+      <h4>メール内容</h4>
+      <p><?php echo nl2br(h($content)); ?></p>
+      <hr>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
+      </div>
+    </footer>
   </body>
 </html>

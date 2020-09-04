@@ -128,31 +128,68 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
-    <h2>お客様情報</h2>
-    <form action="" method="post">
-      <dl>
-        <dt>お名前：<?php echo h($rec2['name']); ?></dt>
-        <dd></dd>
-        <br>
-        <dt>メールアドレス：<?php echo h($rec2['email']); ?></dt>
-        <dd></dd>
-        <br>
-        <dt>郵便番号：<?php echo h($rec2['postal']); ?></dt>
-        <dd></dd>
-        <br>
-        <dt>住所：<?php echo h($rec2['address']); ?></dt>
-        <dd></dd>
-        <br>
-        <dt>電話番号：<?php echo h($rec2['tel']); ?></dt>
-        <dd></dd>
-      </dl>
-      <div class="cartlook">
-        <input class="button" type="button" onclick="history.back()" value="戻る"> |
-        <input class="button" type="submit" name="cash" value="代引き"> |
-        <input class="button" type="submit" name="card" value="カード払い">
+    <header>
+      <h1>古本のアルジ</h1>
+      <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
+    </header>
+    <main>
+      <h2 class="heading">お客様情報</h2>
+      <form action="" method="post">
+        <table class="customer-info">
+          <tr>
+            <td>お名前</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($rec2['name']); ?>
+              </span>
+            </td>
+          </tr>
+          <br>
+          <tr>
+            <td>メールアドレス</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($rec2['email']); ?>
+              </span>
+            </td>
+          </tr>
+          <br>
+          <tr>
+            <td>郵便番号</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($rec2['postal']); ?>
+              </span>
+            </td>
+          </tr>
+          <br>
+          <tr>
+            <td>住所</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($rec2['address']); ?>
+              </span>
+            </td>
+          </tr>
+          <br>
+          <tr>
+            <td>電話番号</td>
+            <td>
+              <span class="border-bottom">
+                <?php echo h($rec2['tel']); ?>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <input class="button black" type="button" onclick="history.back()" value="戻る"> |
+        <input class="button black" type="submit" name="cash" value="代引き"> |
+        <input class="button black" type="submit" name="card" value="カード払い">
+      </form>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
       </div>
-    </form>
-    <footer></footer>
+    </footer>
   </body>
 </html>

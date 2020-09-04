@@ -32,39 +32,42 @@
   </head>
   <body>
     <header>
+      <h1>古本のアルジ</h1>
       <?php if ($_SESSION['cus_login']['now']) : ?>
-        <p class="welcome"><?php echo h($login_name); ?>さん、ようこそ</p><br>
-        <a class="button logout" href="member_logout.php">ログアウト</a>
-        <div class="clear"></div>
+        <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
+        <a class="button white" href="member_logout.php">ログアウト</a>
       <?php else : ?>
-        <p class="welcome">ゲストさん、ようこそ</p><br>
-        <a class="button login" href="member_login.php">会員ログイン</a>
-        <div class="clear"></div>
+        <p>ゲストさん、ようこそ</p><br>
+        <a class="button white" href="member_login.php">会員ログイン</a>
+        <div></div>
       <?php endif; ?>
     </header>
-    <div class="midashi-wrapper">
-      <h2>古本一覧</h2>
-    </div>
-    <?php while(true) : ?>
-      <?php $rec = $stmt->fetch(); ?>
-      <?php if ($rec == false) break; ?>
-      <div class="item">
-        <a class="item_title" href="shop_product.php?procode=<?php echo h($rec['code']); ?>">
-          <img class="item_image" src="../product/pro_picture/<?php echo h($rec['image']); ?>">
-          <br>
-          『<?php echo h($rec['name']); ?>』　
-          <?php echo h($rec['price']); ?>円
-        </a>
-        <br>
+    <main>
+      <h2 class="heading">古本一覧</h2>
+      <div class="book-lists">
+        <?php while(true) : ?>
+          <?php $rec = $stmt->fetch(); ?>
+          <?php if ($rec == false) break; ?>
+            <a class="book-list" href="shop_product.php?procode=<?php echo h($rec['code']); ?>">
+              <img src="../product/pro_picture/<?php echo h($rec['image']); ?>">
+              <br>
+              <div class=" black">
+                『<?php echo h($rec['name']); ?>』　
+                <?php echo h($rec['price']); ?>円
+              </div>
+            </a>
+            <br>
+        <?php endwhile; ?>
       </div>
-    <?php endwhile; ?>
-    <div class="clear"></div>
-    <br>
-    <div class="cartlook">
-      <a class="cartlook button" href="shop_cartlook.php">
-        カートを見る
-      </a>
-    </div>
-    <footer></footer>
+      <br>
+        <a class="button black" href="shop_cartlook.php">
+          カートを見る
+        </a>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
+      </div>
+    </footer>
   </body>
 </html>

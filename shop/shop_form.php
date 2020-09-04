@@ -75,111 +75,132 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <h2>お客様情報</h2>
-    <p>お客様情報を入力してください</p>
-    <div class="clear"></div>
-    <form action="" method="post">
-      <dl>
-        <dt class="input_title">お名前</dt>
-        <dd>
-          <input class="input_content" type="text" name="name" size="35" value="<?php echo h($_POST['name']); ?>">
-          <?php if ($error['name'] == 'blank') : ?>
-            <p>※　お名前を記入してください</p>
-          <?php endif; ?>
-        </dd>
-        <br>
-        <dt class="input_title">メールアドレス</dt>
-        <dd>
-          <input class="input_content" type="text" name="email" size="35" value="<?php echo h($_POST['email']); ?>">
-          <?php if ($error['email'] == 'blank') : ?>
-            <p>※　メールアドレスを記入してください</p>
-          <?php endif; ?>
-          <?php if ($error['email']=='wrong') : ?>
-            <p>※　メールアドレスを正確に入力してください</p>
-          <?php endif; ?>
-        </dd>
-        <br>
-        <dt class="input_title">郵便番号</dt>
-        <dd>
-          <input class="input_content" type="text" name="postal" size="15" value="<?php echo h($_POST['postal']); ?>">
-          <?php if ($error['postal'] == 'blank') : ?>
-            <p>※　郵便番号を記入してください</p>
-          <?php endif; ?>
-          <?php if ($error['postal']=='wrong') : ?>
-            <p>※　「123-4567」の形で入力してください</p>
-          <?php endif; ?>
-        </dd>
-        <br>
-        <dt class="input_title">住所</dt>
-        <dd>
-          <input class="input_content" type="text" name="address" size="35" value="<?php echo h($_POST['address']); ?>">
-          <?php if ($error['address'] == 'blank') : ?>
-            <p>※　住所を記入してください</p>
-          <?php endif; ?>
-        </dd>
-        <br>
-        <dt class="input_title">電話番号</dt>
-        <dd>
-          <input class="input_content" type="text" name="tel" size="15" value="<?php echo h($_POST['tel']); ?>">
-          <?php if ($error['tel'] == 'blank') : ?>
-            <p>※　電話番号を記入してください</p>
-          <?php endif; ?>
-          <?php if ($error['tel'] == 'wrong') : ?>
-            <p>※　○○(○)-○○○○-○○○○の形で入力してください</p>
-          <?php endif; ?>
-        </dd>
+    <header>
+      <h1>古本のアルジ</h1>
+    </header>
+    <main>
+      <h2 class="heading">お客様情報</h2><br>
+      <p class="form-title">お客様情報を入力してください</p>
+      <form action="" method="post">
+        <table class="customer-form">
+          <tr>
+            <td>お名前</td>
+            <td>
+              <input type="text" name="name" size="35" value="<?php echo h($_POST['name']); ?>">
+              <?php if ($error['name'] == 'blank') : ?>
+                <p>※　お名前を記入してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td>
+              <input type="text" name="email" size="35" value="<?php echo h($_POST['email']); ?>">
+              <?php if ($error['email'] == 'blank') : ?>
+                <p>※　メールアドレスを記入してください</p>
+              <?php endif; ?>
+              <?php if ($error['email']=='wrong') : ?>
+                <p>※　メールアドレスを正確に入力してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td>
+              <input type="text" name="postal" size="35" value="<?php echo h($_POST['postal']); ?>">
+              <?php if ($error['postal'] == 'blank') : ?>
+                <p>※　郵便番号を記入してください</p>
+              <?php endif; ?>
+              <?php if ($error['postal']=='wrong') : ?>
+                <p>※　「123-4567」の形で入力してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td>
+              <input type="text" name="address" size="35" value="<?php echo h($_POST['address']); ?>">
+              <?php if ($error['address'] == 'blank') : ?>
+                <p>※　住所を記入してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td>
+              <input type="text" name="tel" size="35" value="<?php echo h($_POST['tel']); ?>">
+              <?php if ($error['tel'] == 'blank') : ?>
+                <p>※　電話番号を記入してください</p>
+              <?php endif; ?>
+              <?php if ($error['tel'] == 'wrong') : ?>
+                <p>※　○○(○)-○○○○-○○○○の形で入力してください</p>
+              <?php endif; ?>
+            </td>
+          </tr>
+        </table>
         <br><br>
-        <input class="radio" type="radio" name="order" value="order_once">
+        <input type="radio" name="order" value="order_once">
         今回だけの注文<br>
-        <input class="radio" type="radio" name="order" value="order_register" checked>
+        <input type="radio" name="order" value="order_register" checked>
         会員登録して注文
-        <input class="button register" type="submit" name="register" value="会員登録する">
+        <input class="button black" type="submit" name="register" value="会員登録する">
         <br>
         <?php if ($order['register'] == 'on') : ?>
           <br>
-          <p class="register">
-            ※　会員登録する方は以下の項目も入力してください
+          <p class="form-title">
+            会員登録する方は以下の項目も入力してください
           </p><br>
-          <dt class="input_title">パスワードを設定してください</dt>
-          <dd>
-            <input class="input_content" type="password" name="pass" size="15" value="<?php echo h($_POST['pass']); ?>">
-            <?php if ($error['pass'] == 'blank') : ?>
-              <p>※　パスワードを記入してください</p>
-            <?php endif; ?>
-            <?php if ($error['pass'] == 'wrong') : ?>
-              <p><※　パスワードが一致しません</p>
-            <?php endif; ?>
-          </dd>
-          <br>
-          <dt class="input_title">パスワードをもう１度入力してください</dt>
-          <dd>
-            <input class="input_content" type="password" name="pass2" size="15" value="">
-          </dd>
-          <br>
-          <dt class="input_title">
-            性別
-          </dt>
-            <input type="radio" name="gender" value="1" checked>男性
-            <input type="radio" name="gender" value="2">女性<br>
-          <br>
-          <dt class="input_title">
-            生まれ年
-          </dt>
-          <select name="birth">
-            <?php for ($i = 2020; 1910 < $i; $i -= 10) : ?>
-              <option value="<?php echo h($i); ?>">
-                <?php echo h($i); ?>年代
-              </option>
-            <?php endfor; ?>
-          </select>
+          <table class="customer-form">
+            <tr>
+              <td>パスワードを設定してください</td>
+              <td>
+                <input type="password" name="pass" size="15" value="<?php echo h($_POST['pass']); ?>">
+                <?php if ($error['pass'] == 'blank') : ?>
+                  <p>※　パスワードを記入してください</p>
+                <?php endif; ?>
+                <?php if ($error['pass'] == 'wrong') : ?>
+                  <p><※　パスワードが一致しません</p>
+                <?php endif; ?>
+              </td>
+            </tr>
+            <tr>
+              <td>パスワードをもう１度入力してください</td>
+              <td>
+                <input type="password" name="pass2" size="15" value="">
+              </td>
+            </tr>
+            <tr>
+              <td>性別</td>
+              <td>
+                <input type="radio" name="gender" value="1" checked>男性
+                <input type="radio" name="gender" value="2">女性
+              </td>
+            </tr>
+            <tr>
+              <td>生まれ年</td>
+              <td>
+                <select name="birth">
+                  <?php for ($i = 2020; 1910 < $i; $i -= 10) : ?>
+                    <option value="<?php echo h($i); ?>">
+                      <?php echo h($i); ?>年代
+                    </option>
+                  <?php endfor; ?>
+                </select>
+              </td>
+            </tr>
+          </table>
         <?php endif; ?>
-      </dl>
-      <br>
-      <div class="check">
-        <input class="button" type="button" onclick="history.back()" value="戻る"> |
-        <input class="button" type="submit" name="check" value="確認">
+        <br>
+        <div>
+          <input class="button black" type="button" onclick="history.back()" value="戻る"> |
+          <input class="button black" type="submit" name="check" value="確認">
+        </div>
+      </form>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
       </div>
-    </form>
-    <footer></footer>
+    </footer>
   </body>
 </html>

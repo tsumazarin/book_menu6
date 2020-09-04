@@ -30,42 +30,58 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <?php if ($_SESSION['cus_login']['now']) : ?>
-      <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
-      <a class="button logout" href="member_logout.php">ログアウト</a>
-      <div class="clear"></div>
-    <?php else : ?>
-      <p>ゲストさん、ようこそ</p><br>
-      <a class="button login" href="member_login.php">会員ログイン</a>
-      <div class="clear"></div>
-    <?php endif; ?>
-    <div class="midashi-wrapper">
-      <h2>古本参照</h2>
-    </div>
-    <br>
-    <?php if(in_array($rec['code'], $carts) == true) : ?>
-      <p>カートに入っています</p>
-    <?php else : ?>
-      <a class="button" href="shop_cartin.php?procode=<?php echo h($rec['code']); ?>">
-        カートに入れる
-      </a>
-      <div class="clear"></div>
-    <?php endif; ?>
-    <dl>
-      <div class="left">
-        <dt class="list">古本コード：<?php echo h($rec['code']); ?></dt>
-        <br>
-        <dt class="list">タイトル：『<?php echo h($rec['name']); ?>』</dt>
-        <br>
-        <dt class="list">価格：<?php echo h($rec['price']); ?>円</dt>
-        <br>
+    <header>
+      <h1>古本のアルジ</h1>
+      <?php if ($_SESSION['cus_login']['now']) : ?>
+        <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
+        <a class="button white" href="member_logout.php">ログアウト</a>
+      <?php else : ?>
+        <p>ゲストさん、ようこそ</p><br>
+        <a class="button white" href="member_login.php">会員ログイン</a>
+      <?php endif; ?>
+    </header>
+    <main>
+      <h2 class="heading">古本参照</h2>
+      <dl class="product-wrapper clearfix">
+        <div class="left">
+          <dt>
+            古本コード：
+            <span class="bold">
+              <?php echo h($rec['code']); ?>
+            </span>
+          </dt>
+          <br>
+          <dt>
+            タイトル：
+            <span class="bold">
+              『<?php echo h($rec['name']); ?>』
+            </span>
+          </dt>
+          <br>
+          <dt>
+            価格：
+            <span class="bold">
+              <?php echo h($rec['price']); ?>円
+            </span>
+          </dt>
+        </div>
+        <div class="right">
+          <img src="../product/pro_picture/<?php echo h($rec['image']) ?>" alt="<?php echo h($rec['name']); ?>">
+        </div>
+      </dl>
+      <a class="button black" href="shop_list.php">戻る</a> |
+      <?php if(in_array($rec['code'], $carts) == true) : ?>
+        <p>カートに入っています</p>
+      <?php else : ?>
+        <a class="button black" href="shop_cartin.php?procode=<?php echo h($rec['code']); ?>">
+          カートに入れる
+        </a>
+      <?php endif; ?>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
       </div>
-      <div class="right">
-        <img src="../product/pro_picture/<?php echo h($rec['image']) ?>" alt="<?php echo h($rec['name']); ?>">
-      </div>
-      <div class="clear"></div>
-    </dl>
-    <br><br>
-    <a class="button" href="shop_list.php">戻る</a>
+    </footer>
   </body>
 </html>

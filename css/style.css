@@ -1,210 +1,250 @@
 @charset "utf-8";
 
-html{
+html {
   font-size:62.5%;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body{
-  color:#333;
   font-size:1.7rem;
   font-family:"Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   width:100%;
-  background-color:#D0B0FF;
 }
 
 header{
-  background-color:#D0B0FF;
-  padding:50px 0;
+  background: #151515 url('../product/pro_picture/book-707387_1920.jpg') no-repeat fixed left bottom;
+  background-size: cover;
+  color:#fff;
+  padding:170px 30px 80px;
+}
+
+main{
+  text-align :center;
+  padding :50px 30px;
 }
 
 footer{
+  position:relative;
+  background: #151515 url('../product/pro_picture/book-707387_1920.jpg') no-repeat fixed left bottom;
+  background-size: cover;
+  color:#fff;
   width:100%;
-  height:100px;
+  height:200px;
+  padding:12px 0;
+  font-size:2.3rem;
 }
 
-h2 {
+h1 {
+  font-size: 4.0rem;
+}
+
+dt, p {
   display:inline-block;
-  text-align:center;
   padding:20px 30px;
   border-radius:20px;
-  margin-right:58px;
-  font-size:3.5rem;
-  color:#fff;
-  background-color:#9933FF;
+  font-size:2.0rem;
 }
 
-dl, form{
-  margin:0 auto;
-  text-align:center;
-}
-
-dt, p{
-  display:inline-block;
-  text-align:center;
-  padding:20px 30px;
-  border-radius:20px;
-  font-size:1.5rem;
-  color:#fff;
-  background-color:#9933FF;
-}
-
-a{
+a {
   text-decoration:none;
 }
 
-a:hover{
+a:hover {
   opacity:0.85;
 }
 
 img{
   width:200px;
   height:250px;
+  margin: 30px 10px;
 }
 
 table{
   width:900px;
-  color:#fff;
-  background-color:#9933FF;
+  margin: 10px auto;
   padding:50px 50px;
   border-radius:20px;
 }
 
-.clear{
-  content:'';
-  clear:both;
-  display:block;
-  padding:10px 0;
+td {
+  border: 3px solid #fff;
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-weight: bold;
 }
 
-.button{
-  color:#fff;
-  background-color:#9933FF;
-  padding:20px 30px;
-  border-radius:5px;
+input {
+  border: 2px solid;
 }
 
-
-.welcome{
-  display:inline-block;
-  color:#DCDCDC;
-  background-color:#9933FF;
-  margin-left:30px;
-  padding:20px 30px;
-  border-radius:10px;
+/* floatとclearfix */
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
-.midashi-wrapper{
-  margin:0 auto;
-  text-align:center;
+.left {
+  width: 450px;
+  float: left;
 }
 
-.logout{
-  width:90px;
-  float:right;
-  margin-right:30px;
+.right {
+  width: 250px;
+  float: left;
 }
 
-.login{
-  width:110px;
-  float:right;
-  margin-right:30px;
+/* 太字 */
+.bold {
+  font-weight: bold;
 }
 
-/* shop_list.php */
-.item{
-  width:28%;
-  float:left;
-  padding:60px 0;
-  text-align:center;
-  margin:20px 20px auto;
-  background-color:#9933FF;
-  border-radius:15px;
+/* 下線 */
+.border-bottom {
+  border-bottom: 3px dashed #ccc;
 }
 
-.item_title{
-  color:#fff;
-  margin:5px 5px;
-  padding:10px 5px 10px 0;
-
-
+/* ボタン */
+.button {
+  display: inline-block;
+  max-width: 260px;
+  text-align: left;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 4px;
 }
 
-.cartlook{
-  text-align:center;
-  margin:40px 0 auto;
+.button:active {
+  transform: translateY(4px);
+  border-bottom: none;
 }
 
-/* member_login.php */
-.input_title{
-  margin-right:60px;
+.white {
+  background-color: #FFF;
+  color: #000;
+  border-bottom: 4px solid #EEEEEE;
 }
 
-.input_content{
-  display:inline-block;
-  width:300px;
-  margin-right:100px;
-  margin:30px 85px 20px 0;
+.black {
+  background-color: #222222;
+  color: #FFF;
+  border-bottom: 4px solid #000;
 }
 
-.do_login{
-  margin:50px 50px 50px 0;
+/* 見出し(h2) */
+.heading {
+  display: inline-block;
+  position: relative;
+  letter-spacing: 2px;
+  font-size: 3.0rem;
+  padding-bottom: 15px;
 }
 
-.list{
-  margin:10px 0;
+.heading::before,
+.heading::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #999;
 }
 
-.left{
-  width:400px;
-  float:left;
-  padding-left:200px;
+.heading::before {
+  bottom: 5px;
 }
 
-.right{
-  width:200px;
-  float:left;
+/* footer */
+.footer-content {
+  position:absolute;
+  top:50%;
+  right:40%;
+  margin:auto;
 }
 
-/* shop_cartin.php */
-.done{
-  text-align:center;
-  margin-right:50px;
+/* shop_card */
+.stripe-button-el {
+  width: 350px;
+  max-width: 100%;
 }
 
-/* shop_cartlook.php */
-.cart_form{
-  margin-left:150px;
+.stripe-button-el span {
+  font-size: 18px;
+  padding-top: 15px;
+  min-height: 60px!important;
 }
 
-.change{
-  display:block;
-  margin-right:150px;
-  margin-bottom:50px;
+/* cartlook */
+.total-and-number {
+  margin: 0 auto;
+  padding-bottom: 20px;
+  width:900px;
+  color: #fff;
+  background-color: #222222;
+  border-radius:20px;
 }
 
-/* shop_form.php */
-.register{
-  padding:5px 10px;
-  margin-bottom:30px;
+/* form */
+.customer-form {
+  font-size: 1.8rem;
+  width: 700px;
+  margin: -80px auto 0;
 }
 
-.check{
-  margin-right:100px;
+/* form-check */
+.customer-form-check {
+  font-size: 1.8rem;
+  width: 700px;
+  margin: -40px auto 0;
 }
 
-.mail{
-  margin-right:60px;
+.form-title::before,
+.form-title::after {
+  content: '';
+  display: inline-block;
+  width: 100px;
+  height: 2px;
+  margin: 0 30px;
+  background-color: #000;
+  vertical-align: middle;
 }
 
+/* kantan-check */
 
-/* staff_top.php */
-.menu{
-  margin-right:70px;
+.customer-info {
+  font-size: 2.5rem;
+  width: 700px;
+  margin: -120px auto 30px;
 }
 
-/* pro_list */
-.book_title{
-  font-weight:bold;
+/* shop-list */
+.book-lists {
+  display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+  margin: 100px auto;
 }
 
-/* pro_add */
+.book-list {
+  width: 25%;
+  border: 4px solid #333333;
+  border-radius: 10px;
+  margin: 50px 30px;
+}
+
+/* product */
+.product-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width:700px;
+  color: #fff;
+  background-color: #222222;
+  border-radius:20px;
+}

@@ -43,21 +43,27 @@
     <title>古本のアルジ | 古本販売サイト</title>
   </head>
   <body>
-    <?php if ($_SESSION['cus_login']['now']) : ?>
-      <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
-      <a class="button logout" href="member_logout.php">ログアウト</a>
-      <div class="clear"></div>
-    <?php else : ?>
-      <p>ゲストさん、ようこそ</p><br>
-      <a class="button login" href="member_login.php">会員ログイン</a>
-      <div class="clear"></div>
-    <?php endif; ?>
-    <div class="midashi-wrapper">
-      <h2>カート追加</h2><br>
+    <header>
+      <h1>古本のアルジ</h1>
+      <?php if ($_SESSION['cus_login']['now']) : ?>
+        <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
+        <a class="button white" href="member_logout.php">ログアウト</a>
+      <?php else : ?>
+        <p>ゲストさん、ようこそ</p><br>
+        <a class="button white" href="member_login.php">会員ログイン</a>
+      <?php endif; ?>
+    </header>
+    <main>
+      <h2 class="heading">カート追加</h2><br>
       <br>
-      <p class="done">『<?php echo h($rec['name']); ?>』をカートに追加しました</p>
-    </div>
-    <br><br>
-    <a class="button" href="shop_list.php">古本一覧に戻る</a>
+      <p>『<?php echo h($rec['name']); ?>』をカートに追加しました</p>
+      <br><br>
+      <a class="button black" href="shop_list.php">古本一覧に戻る</a>
+    </main>
+    <footer>
+      <div class="footer-content">
+        ---Old Books Sales---
+      </div>
+    </footer>
   </body>
 </html>
