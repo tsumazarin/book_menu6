@@ -51,7 +51,8 @@
   </head>
   <body>
     <header>
-      <h1>古本のアルジ</h1>
+      <h1>古本のアルジ</h1><br>
+      <p>〜品質そこそこ 古本販売サイト〜</p>
     </header>
     <main>
       <h2 class="heading">会員ログイン</h2>

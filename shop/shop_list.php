@@ -32,7 +32,8 @@
   </head>
   <body>
     <header>
-      <h1>古本のアルジ</h1>
+      <h1>古本のアルジ</h1><br>
+      <p>〜品質そこそこ 古本販売サイト〜</p><br>
       <?php if ($_SESSION['cus_login']['now']) : ?>
         <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
         <a class="button white" href="member_logout.php">ログアウト</a>

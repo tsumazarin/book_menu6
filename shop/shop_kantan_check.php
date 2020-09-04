@@ -129,7 +129,8 @@
   </head>
   <body>
     <header>
-      <h1>古本のアルジ</h1>
+      <h1>古本のアルジ</h1><br>
+      <p>〜品質そこそこ 古本販売サイト〜</p><br>
       <p><?php echo h($login_name); ?>さん、ようこそ</p><br>
     </header>
     <main>
