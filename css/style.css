@@ -38,6 +38,7 @@ footer{
 }
 
 h1 {
+  display: inline-block;
   font-size: 4.0rem;
   padding-bottom: -40px;
 }
