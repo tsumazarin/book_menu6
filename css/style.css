@@ -169,6 +169,8 @@ input {
   margin:auto;
 }
 
+/* shop */
+
 /* shop_card */
 .stripe-button-el {
   width: 350px;
@@ -229,7 +231,7 @@ input {
   display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-  margin: 100px auto;
+  margin: 100px auto 0;
 }
 
 .book-list {
@@ -237,6 +239,21 @@ input {
   border: 4px solid #333333;
   border-radius: 10px;
   margin: 50px 30px;
+}
+
+.page {
+  font-weight: bold;
+  padding: 30px auto;
+}
+
+.page-title {
+  color: #000;
+}
+
+.page-title:hover {
+  color: #fff;
+  background-color: #000;
+  padding: 5px 10px;
 }
 
 /* product */
@@ -249,4 +266,218 @@ input {
   color: #fff;
   background-color: #222222;
   border-radius:20px;
+}
+
+/* pro-edit-check, pro-display */
+.product-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.product-content {
+  font-size: 1.8rem;
+  width: 450px;
+}
+
+/* staff */
+/* staff-edit, staff-display */
+.staff-form,
+.product-form {
+  font-size: 1.8rem;
+  width: 700px;
+  margin: -50px auto 0;
+}
+
+
+/* メディアクエリ */
+/* タブレット向け */
+@media(max-width: 1000px) {
+  body{
+    font-size:1.3rem;
+  }
+
+  header {
+    padding:140px 25px 80px;
+  }
+
+  main {
+    padding: 40px 30px;
+  }
+
+  footer{
+    height:170px;
+    padding:10px 0;
+    font-size:1.9rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  dt, p {
+    padding:18px 25px;
+    font-size:1.3rem;
+  }
+
+  table {
+    width: 80%;
+  }
+
+  td {
+    font-size: 1.7rem;
+    border: 3px solid #fff;
+    padding: 8px 8px;
+  }
+
+  img{
+    width:150px;
+    height:200px;
+    margin: 23px 15px;
+  }
+
+  .button {
+    max-width: 260px;
+    text-align: left;
+    font-size: 1.6rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+
+  .white {
+    border-bottom: 3px solid #EEEEEE;
+  }
+
+  .black {
+    border-bottom: 3px solid #000;
+  }
+
+  .heading {
+    font-size: 3.0rem;
+    padding-bottom: 10px;
+  }
+
+  .total-and-number {
+    width: 80%;
+  }
+
+  .customer-form {
+    font-size: 1.6rem;
+    width: 80%;
+    margin: -60px auto 0;
+  }
+
+  .form-title::before,
+  .form-title::after {
+    width: 75px;
+    margin: 0 25px;
+  }
+
+  .product-wrapper {
+    width: 90%;
+  }
+
+  .book-lists {
+    margin: 0 auto 30px;
+  }
+
+  .book-list {
+    width: 28%;
+  }
+}
+
+/* スマホ向け */
+@media(max-width: 650px) {
+  body{
+    font-size:1.3rem;
+  }
+
+  header {
+    padding:100px 20px 60px;
+  }
+
+  main {
+    padding: 30px 20px;
+  }
+
+  footer{
+    height:150px;
+    padding:8px 0;
+    font-size:1.7rem;
+  }
+
+  h1 {
+    font-size: 3.0rem;
+  }
+
+  dt, p {
+    padding:14px 20px;
+    font-size:1.3rem;
+  }
+
+  table {
+    width: 80%;
+  }
+
+  td {
+    font-size: 1.5rem;
+    border: 2px solid #fff;
+    padding: 6px 6px;
+  }
+
+  img{
+    width:100px;
+    height:150px;
+    margin: 20px 12px;
+  }
+
+  .button {
+    max-width: 260px;
+    text-align: left;
+    font-size: 1.6rem;
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+
+  .white {
+    border-bottom: 2px solid #EEEEEE;
+  }
+
+  .black {
+    border-bottom: 2px solid #000;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+    padding-bottom: 7px;
+  }
+
+  .total-and-number {
+    width:95%;
+  }
+
+  .customer-form {
+    font-size: 1.3rem;
+    width: 80%;
+    margin: -50px auto 0;
+  }
+
+  .form-title::before,
+  .form-title::after {
+    width: 50px;
+    margin: 0 20px;
+  }
+
+  .product-wrapper {
+    width: 90%;
+  }
+
+  .book-lists {
+    margin: 0 auto 30px;
+  }
+
+  .book-list {
+    width: 39%;
+  }
 }
