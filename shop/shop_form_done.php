@@ -19,11 +19,13 @@
   $pay = $_SESSION['pay'];
 
   //メールの本文
-  $content = '';
-  $content .= "{$customer_name}様\n\nこのたびはご注文ありがとうございました。\n";
-  $content .= "\n";
-  $content .= "ご注文商品\n";
-  $content .= "------------\n";
+  $content = <<<EOD
+    {$customer_name}様\n\nこのたびはご注文ありがとうございました。\n
+    \n
+    ご注文商品\n
+    ------------\n
+    EOD;
+
   for ($i = 0; $i < $max; $i++) {
     $stmt = $db->prepare('SELECT mp.name,mp.price
       FROM
@@ -35,23 +37,27 @@
     $stmt->execute($data);
     $rec = $stmt->fetch();
 
-    $total = $rec['price'] * $number[$i];
+    $total += $rec['price'] * $number[$i];
 
-    $content .= "『{$rec['name']}』";
-    $content .= "{$rec['price']}円×";
-    $content .= "{$number[$i]}コ＝";
-    $content .= "{$total}円\n";
+    $content .= <<<EOD
+     {$rec['name']}
+     {$rec['price']}円×{$number[$i]}コ\n
+     EOD;
   }
+  $content .= "合計：{$total}円\n";
+  $content .= "\n";
   $db = null;
 
   if ($pay == 'cash') {
-    $content .= "送料は無料です。\n";
-    $content .= "------------\n";
-    $content .= "\n";
-    $content .= "代金は以下の口座にお振込ください。\n";
-    $content .= "つま銀行 ざりん支店 普通口座 1234567\n";
-    $content .= "入金確認が取れ次第、発送させていただきます。\n";
-    $content .= "\n";
+    $content .= <<<EOD
+      送料は無料です。\n
+      ------------\n
+      \n
+      代金は以下の口座にお振込ください。\n
+      つま銀行 ざりん支店 普通口座 1234567\n
+      入金確認が取れ次第、発送させていただきます。\n
+      \n
+      EOD;
   }
 
   if ($pay == 'card') {
@@ -59,19 +65,23 @@
   }
 
   if ($order == 'order_register') {
-    $content .= "会員登録が完了いたしました。\n";
-    $content .= "次回からはメールアドレスとパスワードでログインしてください。\n";
-    $content .= "ご注文が簡単にできるようになります。\n";
-    $content .= "\n";
+    $content .= <<<EOD
+      会員登録が完了いたしました。\n
+      次回からはメールアドレスとパスワードでログインしてください。\n
+      ご注文が簡単にできるようになります。\n
+      \n
+      EOD;
   }
 
-  $content .= "□□□□□□□□□□□□□□□□\n";
-  $content .= "〜品質そこそこ古本のアルジ〜\n";
-  $content .= "\n";
-  $content .= "沖縄県那覇市恩納村123-4\n";
-  $content .= "電話 090-6060-7843\n";
-  $content .= "メール：info@huruhonichiba.co.jp\n";
-  $content .= "□□□□□□□□□□□□□□□□\n";
+  $content .= <<<EOD
+    □□□□□□□□□□□□□□□□\n
+    〜品質そこそこ古本のアルジ〜\n
+    \n
+    沖縄県那覇市恩納村123-4\n
+    電話 090-6060-7843\n
+    メール：info@huruhonichiba.co.jp\n
+    □□□□□□□□□□□□□□□□\n
+    EOD;
   //メール終了
 
   //お客様にメール送信
